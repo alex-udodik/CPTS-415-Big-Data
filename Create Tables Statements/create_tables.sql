@@ -241,7 +241,20 @@ CREATE TABLE Floors (
 );
 
 CREATE TABLE Fossils (
-
+    Name VARCHAR(255),
+    Buy VARCHAR(255),
+    Sell INTEGER,
+    Color1 VARCHAR(255),
+    Color2 VARCHAR(255),
+    Size VARCHAR(255), /* Might need to be changed */
+    Source VARCHAR(255),
+    Museum VARCHAR(255),
+    Version VARCHAR(255),
+    Interact BOOLEAN,
+    Catalog VARCHAR(255), /* Might need to be changed*/
+    Filename VARCHAR(255),
+    InternalID INTEGER,
+    UniqueEntryID VARCHAR(255) UNIQUE
 );
 
 CREATE TABLE Headwear (
