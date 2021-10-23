@@ -318,7 +318,47 @@ CREATE TABLE Housewares (
 );
 
 CREATE TABLE Insects (
+    Number INTEGER,
+    Name VARCHAR(255),
+    Sell INTEGER,
+    Where VARCHAR(255),
+    Weather VARCHAR(255),
+    TotalCatchesToUnlock INTEGER,
+    SpawnRates INTEGER,
 
+    NHJan VARCHAR(255), /* Might need to be changed */
+    NHFeb VARCHAR(255), /* Might need to be changed */
+    NHMar VARCHAR(255), /* Might need to be changed */
+    NHApr VARCHAR(255), /* Might need to be changed */
+    NHMay VARCHAR(255), /* Might need to be changed */
+    NHJun VARCHAR(255), /* Might need to be changed */
+    NHJul VARCHAR(255), /* Might need to be changed */
+    NHAug VARCHAR(255), /* Might need to be changed */
+    NHSep VARCHAR(255), /* Might need to be changed */
+    NHOct VARCHAR(255), /* Might need to be changed */
+    NHNov VARCHAR(255), /* Might need to be changed */
+    NHDec VARCHAR(255), /* Might need to be changed */
+
+    SHJan VARCHAR(255), /* Might need to be changed */
+    SHFeb VARCHAR(255), /* Might need to be changed */
+    SHMar VARCHAR(255), /* Might need to be changed */
+    SHApr VARCHAR(255), /* Might need to be changed */
+    SHMay VARCHAR(255), /* Might need to be changed */
+    SHJun VARCHAR(255), /* Might need to be changed */
+    SHJul VARCHAR(255), /* Might need to be changed */
+    SHAug VARCHAR(255), /* Might need to be changed */
+    SHSep VARCHAR(255), /* Might need to be changed */
+    SHOct VARCHAR(255), /* Might need to be changed */
+    SHNov VARCHAR(255), /* Might need to be changed */
+    SHDec VARCHAR(255), /* Might need to be changed */
+
+    Color1 VARCHAR(255),
+    Color2 VARCHAR(255),
+    IconFileName VARCHAR(255),
+    CritterpediaFilename VARCHAR(255),
+    Furniture VARCHAR(255),
+    InternalID INTEGER,
+    UniqueEntryID VARCHAR(255) UNIQUE
 );
 
 CREATE TABLE Miscellaneous (
