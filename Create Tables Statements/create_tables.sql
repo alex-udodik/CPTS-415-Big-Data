@@ -411,7 +411,21 @@ CREATE TABLE Music (
 );
 
 CREATE TABLE Other (
-
+    Name VARCHAR(255),
+    DIY BOOLEAN,
+    StackSize INTEGER,
+    Buy VARCHAR(255), /* Might need to be changed */
+    Sell INTEGER,
+    MilesPrice VARCHAR(255), /* Might need to be changed */
+    Source VARCHAR(255),
+    SourceNotes VARCHAR(255),
+    Tag VARCHAR(255),
+    Color1 VARCHAR(255),
+    Color2 VARCHAR(255),
+    Version VARCHAR(255),
+    Filename VARCHAR(255),
+    InternalID INTEGER,
+    UniqueEntryID VARCHAR(255) UNIQUE
 );
 
 CREATE TABLE Photos (
