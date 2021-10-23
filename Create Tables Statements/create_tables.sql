@@ -478,7 +478,30 @@ CREATE TABLE Reactions (
 );
 
 CREATE TABLE Recipes (
-
+    Name VARCHAR(255),
+    Number1 INTEGER,
+    Material1 VARCHAR(255),
+    Number2 INTEGER,
+    Material2 VARCHAR(255),
+    Number3 INTEGER,
+    Material3 VARCHAR(255),
+    Number4 INTEGER,
+    Material4 VARCHAR(255),
+    Number5 INTEGER,
+    Material5 VARCHAR(255),
+    Number6 INTEGER,
+    Material6 VARCHAR(255),
+    Buy VARCHAR(255), /* Might need to be changed */
+    Sell INTEGER,
+    MilesPrice VARCHAR(255), /* Might need to be changed */
+    Source VARCHAR(255),
+    SourceNotes VARCHAR(255),
+    NumberOfRecipesToUnlock INTEGER,
+    Version VARCHAR(255),
+    Category VARCHAR(255),
+    SerialID INTEGER,
+    InternalID INTEGER,
+    UniqueEntryID VARCHAR(255) UNIQUE
 );
 
 CREATE TABLE Rugs (
