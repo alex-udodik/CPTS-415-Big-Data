@@ -450,10 +450,23 @@ CREATE TABLE Photos (
     VariantID VARCHAR(255),
     InternalID INTEGER,
     UniqueEntryID VARCHAR(255) UNIQUE
+
 );
 
 CREATE TABLE Posters (
-
+    Name VARCHAR(255),
+    Buy INTEGER,
+    Sell INTEGER,
+    Color1 VARCHAR(255),
+    Color2 VARCHAR(255),
+    Size VARCHAR(255), /* Might need to be changed */
+    Source VARCHAR(255),
+    SourceNotes VARCHAR(255),
+    Version VARCHAR(255),
+    Catalog VARCHAR(255),
+    Filename VARCHAR(255),
+    InternalID INTEGER,
+    UniqueEntryID VARCHAR(255) UNIQUE
 );
 
 CREATE TABLE Reactions (
