@@ -697,5 +697,30 @@ CREATE TABLE WallMounted (
 );
 
 CREATE TABLE Wallpaper (
-
+    Name VARCHAR(255),
+    VFX BOOLEAN,
+    VFXType VARCHAR(255),
+    DIY BOOLEAN,
+    Buy VARCHAR(255),
+    Sell INTEGER,
+    Color1 VARCHAR(255),
+    Color2 VARCHAR(255),
+    MilesPrice VARCHAR(255),
+    Source VARCHAR(255),
+    SourceNotes VARCHAR(255),
+    Catalog VARCHAR(255),
+    WindowType VARCHAR(255),
+    WindowColor VARCHAR(255),
+    Panetype VARCHAR(255),
+    CurtainType VARCHAR(255),
+    CurtainColor VARCHAR(255),
+    CeilingType VARCHAR(255),
+    HHAConcept1 VARCHAR(255),
+    HHAConcept2 VARCHAR(255),
+    HHASeries VARCHAR(255),
+    Tag VARCHAR(255),
+    Version VARCHAR(255),
+    Filename VARCHAR(255),
+    InternalID INTEGER,
+    UniqueEntryID VARCHAR(255) UNIQUE
 );
