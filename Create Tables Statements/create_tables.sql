@@ -575,7 +575,28 @@ CREATE TABLE Socks (
 );
 
 CREATE TABLE Tools (
-
+    Name VARCHAR(255),
+    Variation VARCHAR(255),
+    BodyTitle VARCHAR(255),
+    DIY BOOLEAN,
+    Customize BOOLEAN,
+    KitCost VARCHAR(255),
+    Uses VARCHAR(255),
+    StackSize INTEGER,
+    Buy VARCHAR(255), 
+    Sell INTEGER,
+    Color1 VARCHAR(255),
+    Color2 VARCHAR(255),
+    Size VARCHAR(255),
+    Set VARCHAR(255),
+    MilesPrice VARCHAR(255),
+    Source VARCHAR(255),
+    SourceNotes VARCHAR(255),
+    Version VARCHAR(255),
+    Filename VARCHAR(255),
+    VariantID VARCHAR(255),
+    InternalID INTEGER,
+    UniqueEntryID VARCHAR(255) UNIQUE
 );
 
 CREATE TABLE Tops (
