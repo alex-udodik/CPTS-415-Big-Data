@@ -470,7 +470,11 @@ CREATE TABLE Posters (
 );
 
 CREATE TABLE Reactions (
-
+    Name VARCHAR(255),
+    Source VARCHAR(255),
+    SourceNotes VARCHAR(255),
+    InternalID INTEGER,
+    UniqueEntryID VARCHAR(255) UNIQUE
 );
 
 CREATE TABLE Recipes (
