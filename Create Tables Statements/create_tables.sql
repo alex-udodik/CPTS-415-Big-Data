@@ -123,7 +123,13 @@ CREATE TABLE Bottoms (
 );
 
 CREATE TABLE Construction (
-
+    Name VARCHAR(255),
+    Buy INTEGER,
+    Catalog VARCHAR(255),
+    Source VARCHAR(255),
+    Filename VARCHAR(255),
+    Version VARCHAR(255),
+    UniqueEntryID VARCHAR(255) UNIQUE
 );
 
 CREATE TABLE DressUp (
