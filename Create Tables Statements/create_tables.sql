@@ -283,7 +283,38 @@ CREATE TABLE Headwear (
 );
 
 CREATE TABLE Housewares (
-
+    Name VARCHAR(255),
+    Variation VARCHAR(255),
+    BodyTitle VARCHAR(255),
+    Pattern VARCHAR(255),
+    PatternTitle VARCHAR(255),
+    DIY BOOLEAN,
+    BodyCustomize BOOLEAN,
+    PatternCustomize BOOLEAN,
+    KitCost VARCHAR(255), /* Might need to be changed */
+    Buy VARCHAR(255), /* Might need to be changed */
+    Sell INTEGER,
+    Color1 VARCHAR(255),
+    Color2 VARCHAR(255),
+    Size VARCHAR(255), /* Might need to be changed */
+    MilesPrice VARCHAR(255), /* Might need to be changed */
+    Source VARCHAR(255),
+    SourceNotes VARCHAR(255),
+    Version VARCHAR(255),
+    HHAConcept1 VARCHAR(255),
+    HHAConcept2 VARCHAR(255),
+    HHASeries VARCHAR(255),
+    HHASet VARCHAR(255),
+    Interact BOOLEAN,
+    Tag VARCHAR(255),
+    Outdoor BOOLEAN,
+    SpeakerType VARCHAR(255),
+    LightingType VARCHAR(255),
+    Catalog VARCHAR(255),
+    Filename VARCHAR(255),
+    VariantID VARCHAR(255),
+    InternalID INTEGER,
+    UniqueEntryID VARCHAR(255) UNIQUE
 );
 
 CREATE TABLE Insects (
