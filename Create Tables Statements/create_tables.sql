@@ -56,7 +56,24 @@ CREATE TABLE Art (
     Color1 VARCHAR(255),
     Color2 VARCHAR(255),
     Size VARCHAR(255), /* Might need to be changed*/
-
+    RealArtworkTitle VARCHAR(255),
+    Artist VARCHAR(255),
+    MuseumDescription VARCHAR(255),
+    Source VARCHAR(255),
+    SourceNotes VARCHAR(255),
+    Version VARCHAR(255),
+    HHAConcept1 VARCHAR(255),
+    HHAConcept2 VARCHAR(255),
+    HHASeries VARCHAR(255),
+    HHASet VARCHAR(255),
+    Interact BOOLEAN,
+    Tag VARCHAR(255),
+    SpeakerType VARCHAR(255),
+    LightingType VARCHAR(255),
+    Catalog VARCHAR(255),
+    Filename VARCHAR(255),
+    InternalID INTEGER,
+    UniqueEntryID VARCHAR(255) UNIQUE
 );
 
 CREATE TABLE Bags (
