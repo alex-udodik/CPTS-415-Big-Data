@@ -24,7 +24,16 @@ CREATE TABLE Accessories (
 );
 
 CREATE TABLE Achievements (
-
+    Name VARCHAR(255) UNIQUE,
+    AwardCriteria VARCHAR(255), 
+    Number INTEGER,
+    InternalID INTEGER,
+    InternalName VARCHAR(255),
+    InternalCategory VARCHAR(255),
+    NumOfTiers INTEGER,
+    Tier1 INTEGER,
+    Tier2 INTEGER,
+    Tier3 INTEGER
 );
 
 CREATE TABLE Art (
