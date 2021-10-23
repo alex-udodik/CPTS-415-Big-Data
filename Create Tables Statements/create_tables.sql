@@ -643,7 +643,23 @@ CREATE TABLE Umbrellas (
 );
 
 CREATE TABLE Villagers (
-
+    Name VARCHAR(255),
+    Species VARCHAR(255),
+    Gender VARCHAR(255),
+    Personality VARCHAR(255),
+    Hobby VARCHAR(255),
+    Birthday VARCHAR(255),
+    Catchphrase VARCHAR(255),
+    FavoriteSong VARCHAR(255),
+    Style1 VARCHAR(255),
+    Style2 VARCHAR(255),
+    Color1 VARCHAR(255),
+    Color2 VARCHAR(255),
+    Wallpaper VARCHAR(255),
+    Flooring VARCHAR(255),
+    FurnitureList VARCHAR(255), /*Might need to be changed*/
+    Filename VARCHAR(255),
+    UniqueEntryID VARCHAR(255) UNIQUE
 );
 
 CREATE TABLE WallMounted (
