@@ -33,10 +33,29 @@ CREATE TABLE Achievements (
     NumOfTiers INTEGER,
     Tier1 INTEGER,
     Tier2 INTEGER,
-    Tier3 INTEGER
+    Tier3 INTEGER,
+    Tier4 INTEGER,
+    Tier5 INTEGER,
+    RewardTier1 INTEGER,
+    RewardTier2 INTEGER,
+    RewardTier3 INTEGER,
+    RewardTier4 INTEGER,
+    RewardTier5 INTEGER,
+    RewardTier6 INTEGER,
+    Sequential BOOLEAN,
+    Version VARCHAR(255),
+    UniqueEntryID VARCHAR(255) UNIQUE
 );
 
 CREATE TABLE Art (
+    Name VARCHAR(255),
+    Genuine BOOLEAN,
+    Category VARCHAR(255),
+    Buy INTEGER,
+    Sell INTEGER,
+    Color1 VARCHAR(255),
+    Color2 VARCHAR(255),
+    Size VARCHAR(255), /* Might need to be changed*/
 
 );
 
