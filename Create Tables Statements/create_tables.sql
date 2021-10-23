@@ -623,8 +623,23 @@ CREATE TABLE Tops (
     UniqueEntryID VARCHAR(255) UNIQUE
 );
 
-CREATE TABLE Umbreallas (
-
+CREATE TABLE Umbrellas (
+    Name VARCHAR(255),
+    DIY BOOLEAN,
+    Buy VARCHAR(255),
+    Sell INTEGER,
+    Color1 VARCHAR(255),
+    Color2 VARCHAR(255),
+    Size VARCHAR(255),
+    MilesPrice VARCHAR(255),
+    Source VARCHAR(255),
+    SourceNotes VARCHAR(255),
+    Version VARCHAR(255),
+    VillagerEquippable BOOLEAN,
+    Catalog VARCHAR(255),
+    Filename VARCHAR(255),
+    InternalID INTEGER,
+    UniqueEntryID VARCHAR(255) UNIQUE
 );
 
 CREATE TABLE Villagers (
