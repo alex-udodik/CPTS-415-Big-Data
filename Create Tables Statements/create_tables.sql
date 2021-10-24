@@ -391,7 +391,7 @@ CREATE TABLE Miscellaneous (
     Filename VARCHAR(255),
     VariantID VARCHAR(255),
     InternalID VARCHAR(255),
-    UniqueEntryID VARCHAR(255) UNIQUE
+    UniqueEntryID VARCHAR(255)
 );
 
 CREATE TABLE Music (
@@ -415,7 +415,7 @@ CREATE TABLE Other (
     DIY BOOLEAN,
     StackSize INTEGER,
     Buy VARCHAR(255), /* Might need to be changed */
-    Sell INTEGER,
+    Sell VARCHAR(255),
     MilesPrice VARCHAR(255), /* Might need to be changed */
     Source VARCHAR(255),
     SourceNotes VARCHAR(255),
@@ -443,7 +443,6 @@ CREATE TABLE Photos (
     Color2 VARCHAR(255),
     Size VARCHAR(255),
     Source VARCHAR(255),
-    SourceNotes VARCHAR(255),
     Version VARCHAR(255),
     Catalog VARCHAR(255),
     Filename VARCHAR(255),
@@ -473,7 +472,7 @@ CREATE TABLE Reactions (
     Name VARCHAR(255),
     Source VARCHAR(255),
     SourceNotes VARCHAR(255),
-    InternalID INTEGER,
+    InternalID VARCHAR(255),
     UniqueEntryID VARCHAR(255) UNIQUE
 );
 
@@ -481,15 +480,15 @@ CREATE TABLE Recipes (
     Name VARCHAR(255),
     Number1 INTEGER,
     Material1 VARCHAR(255),
-    Number2 INTEGER,
+    Number2 VARCHAR(255),
     Material2 VARCHAR(255),
-    Number3 INTEGER,
+    Number3 VARCHAR(255),
     Material3 VARCHAR(255),
-    Number4 INTEGER,
+    Number4 VARCHAR(255),
     Material4 VARCHAR(255),
-    Number5 INTEGER,
+    Number5 VARCHAR(255),
     Material5 VARCHAR(255),
-    Number6 INTEGER,
+    Number6 VARCHAR(255),
     Material6 VARCHAR(255),
     Buy VARCHAR(255), /* Might need to be changed */
     Sell INTEGER,
@@ -507,7 +506,7 @@ CREATE TABLE Recipes (
 CREATE TABLE Rugs (
     Name VARCHAR(255),
     DIY BOOLEAN,
-    Buy INTEGER,
+    Buy VARCHAR(255),
     Sell INTEGER,
     Color1 VARCHAR(255),
     Color2 VARCHAR(255),
@@ -530,7 +529,7 @@ CREATE TABLE Shoes (
     Name VARCHAR(255),
     Variation VARCHAR(255),
     DIY BOOLEAN,
-    Buy INTEGER,
+    Buy VARCHAR(255),
     Sell INTEGER,
     Color1 VARCHAR(255),
     Color2 VARCHAR(255),
@@ -554,7 +553,7 @@ CREATE TABLE Socks (
     Name VARCHAR(255),
     Variation VARCHAR(255),
     DIY BOOLEAN,
-    Buy INTEGER,
+    Buy VARCHAR(255),
     Sell INTEGER,
     Color1 VARCHAR(255),
     Color2 VARCHAR(255),
