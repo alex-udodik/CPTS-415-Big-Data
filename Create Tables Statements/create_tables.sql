@@ -175,7 +175,7 @@ CREATE TABLE Fish (
     Number INTEGER UNIQUE,
     Name VARCHAR(255),
     Sell INTEGER,
-    Where VARCHAR(255),
+    Where_ VARCHAR(255),
     Shadow VARCHAR(255),
     TotalCatchesToUnlock INTEGER,
     SpawnRates VARCHAR(255), /* Might need to be changed */
@@ -321,7 +321,7 @@ CREATE TABLE Insects (
     Number INTEGER,
     Name VARCHAR(255),
     Sell INTEGER,
-    Where VARCHAR(255),
+    Where_ VARCHAR(255),
     Weather VARCHAR(255),
     TotalCatchesToUnlock INTEGER,
     SpawnRates INTEGER,
