@@ -58,7 +58,7 @@ CREATE TABLE Art (
     Size VARCHAR(255), /* Might need to be changed*/
     RealArtworkTitle VARCHAR(255),
     Artist VARCHAR(255),
-    MuseumDescription VARCHAR(255),
+    MuseumDescription VARCHAR(1000),
     Source VARCHAR(255),
     SourceNotes VARCHAR(255),
     Version VARCHAR(255),
@@ -602,7 +602,7 @@ CREATE TABLE Tops (
     Name VARCHAR(255),
     Variation VARCHAR(255),
     DIY BOOLEAN,
-    Buy INTEGER,
+    Buy VARCHAR(255),
     Sell INTEGER,
     Color1 VARCHAR(255),
     Color2 VARCHAR(255),
