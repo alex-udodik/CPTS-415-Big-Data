@@ -6,3 +6,9 @@ To run the python parser, a library named csv must be installed. In the director
 ````
 pip install csv
 ````
+##
+and
+
+````
+pip install psycopg2
+````

@@ -2,7 +2,7 @@ CREATE TABLE Accessories (
     Name VARCHAR(255),
     Variation VARCHAR(255),
     DIY BOOLEAN,
-    Buy INTEGER,
+    Buy VARCHAR(255),
     Sell INTEGER,
     Color1 VARCHAR(255),
     Color2 VARCHAR(255),
@@ -24,7 +24,7 @@ CREATE TABLE Accessories (
 );
 
 CREATE TABLE Achievements (
-    Name VARCHAR(255) UNIQUE,
+    Name VARCHAR(255),
     AwardCriteria VARCHAR(255), 
     Number INTEGER,
     InternalID INTEGER,
@@ -51,7 +51,7 @@ CREATE TABLE Art (
     Name VARCHAR(255),
     Genuine BOOLEAN,
     Category VARCHAR(255),
-    Buy INTEGER,
+    Buy VARCHAR(255),
     Sell INTEGER,
     Color1 VARCHAR(255),
     Color2 VARCHAR(255),
