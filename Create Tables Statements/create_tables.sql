@@ -103,7 +103,7 @@ CREATE TABLE Bottoms (
     Name VARCHAR(255),
     Variation VARCHAR(255),
     DIY BOOLEAN,
-    Buy INTEGER,
+    Buy VARCHAR(255),
     Sell INTEGER,
     Color1 VARCHAR(255),
     Color2 VARCHAR(255),
@@ -136,7 +136,7 @@ CREATE TABLE DressUp (
     Name VARCHAR(255),
     Variation VARCHAR(255),
     DIY BOOLEAN,
-    Buy INTEGER,
+    Buy VARCHAR(255),
     Sell INTEGER,
     Color1 VARCHAR(255),
     Color2 VARCHAR(255),
@@ -324,7 +324,7 @@ CREATE TABLE Insects (
     Where_ VARCHAR(255),
     Weather VARCHAR(255),
     TotalCatchesToUnlock INTEGER,
-    SpawnRates INTEGER,
+    SpawnRates VARCHAR(255),
 
     NHJan VARCHAR(255), /* Might need to be changed */
     NHFeb VARCHAR(255), /* Might need to be changed */
@@ -390,7 +390,7 @@ CREATE TABLE Miscellaneous (
     LightingType VARCHAR(255),
     Filename VARCHAR(255),
     VariantID VARCHAR(255),
-    InternalID INTEGER,
+    InternalID VARCHAR(255),
     UniqueEntryID VARCHAR(255) UNIQUE
 );
 
