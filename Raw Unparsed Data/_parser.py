@@ -1,5 +1,7 @@
 import csv
 import psycopg2
+from timeit import default_timer as timer
+
 
 database_credentials = "dbname='415BigData' user='postgres' host='localhost' password='password'"
 
@@ -2297,6 +2299,10 @@ def parseWallpaper():
             lineNumber = lineNumber + 1
     pass
 
+print("Starting database insertion...")
+
+start = timer()
+
 parseAccessories()
 parseAchievements()
 parseArt()
@@ -2328,4 +2334,7 @@ parseVillagers()
 parseWallMounted()
 parseWallpaper()
 
+end = timer()
 print("Done")
+print("Time elapsed for database insertion: " + str(end -start) + " seconds")
+
