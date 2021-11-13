@@ -1,0 +1,10 @@
+E:\GitLab\CPTS 415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\BigDataGUI.exe.config
+E:\GitLab\CPTS 415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\BigDataGUI.exe
+E:\GitLab\CPTS 415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\BigDataGUI.pdb
+E:\GitLab\CPTS 415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\obj\Debug\BigDataGUI.csprojAssemblyReference.cache
+E:\GitLab\CPTS 415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\obj\Debug\BigDataGUI.Properties.Resources.resources
+E:\GitLab\CPTS 415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\obj\Debug\BigDataGUI.csproj.GenerateResource.cache
+E:\GitLab\CPTS 415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\obj\Debug\BigDataGUI.csproj.CoreCompileInputs.cache
+E:\GitLab\CPTS 415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\obj\Debug\BigDataGUI.exe
+E:\GitLab\CPTS 415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\obj\Debug\BigDataGUI.pdb
+E:\GitLab\CPTS 415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\obj\Debug\BigDataGUI.Form1.resources
