@@ -130,7 +130,7 @@ namespace BigDataGUI.Libraries
 			// in each content node takt the inner text of the key and add it to the loaded content list
 			foreach (XmlNode node in nodeList)
 			{
-				loadedContentList.Add(node["key"].InnerText);
+				loadedContentList.Add(node["Key"].InnerText);
 			}
 
 			loadedContentList.Sort(); // sort list

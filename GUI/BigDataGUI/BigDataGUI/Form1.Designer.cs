@@ -30,8 +30,8 @@ namespace BigDataGUI
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dataGridViewSearchResultsLeft = new System.Windows.Forms.DataGridView();
+            this.searchTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,7 +48,7 @@ namespace BigDataGUI
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchResultsLeft)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -61,21 +61,22 @@ namespace BigDataGUI
             this.dataGridView1.Size = new System.Drawing.Size(510, 663);
             this.dataGridView1.TabIndex = 0;
             // 
-            // dataGridView2
+            // dataGridViewSearchResultsLeft
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(6, 41);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(510, 663);
-            this.dataGridView2.TabIndex = 1;
+            this.dataGridViewSearchResultsLeft.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSearchResultsLeft.Location = new System.Drawing.Point(6, 41);
+            this.dataGridViewSearchResultsLeft.Name = "dataGridViewSearchResultsLeft";
+            this.dataGridViewSearchResultsLeft.Size = new System.Drawing.Size(510, 663);
+            this.dataGridViewSearchResultsLeft.TabIndex = 1;
             // 
-            // textBox1
+            // searchTextBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(389, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(432, 30);
-            this.textBox1.TabIndex = 2;
+            this.searchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchTextBox.Location = new System.Drawing.Point(389, 21);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(432, 30);
+            this.searchTextBox.TabIndex = 2;
+            this.searchTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // label1
             // 
@@ -228,7 +229,7 @@ namespace BigDataGUI
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dataGridView2);
+            this.groupBox2.Controls.Add(this.dataGridViewSearchResultsLeft);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.dataGridView1);
@@ -246,11 +247,11 @@ namespace BigDataGUI
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.searchTextBox);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchResultsLeft)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -263,8 +264,8 @@ namespace BigDataGUI
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridView dataGridViewSearchResultsLeft;
+        private System.Windows.Forms.TextBox searchTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
