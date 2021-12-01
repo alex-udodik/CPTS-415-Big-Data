@@ -18,6 +18,8 @@ namespace BigDataGUI.Libraries
                                             "housewares", "insects", "miscellaneous", "music", "other", "photos", "posters", "reactions", "recipes", "rugs", "shoes",
                                             "socks", "tools", "tops", "umbrellas", "villagers", "wallmounted", "wallpaper"};
 
+
+        //this function takes in a SQL query in the form of a string and will return a DataTable with the results
         public DataTable execute(string query)
         {
            
@@ -55,17 +57,23 @@ namespace BigDataGUI.Libraries
             }
         }
 
+
+        // this function takes in a word to be searched and creates a
+        // SQL query that will search all tables for that word
         public string executeSearch(string word)
         {
             string wordLowercase = word.ToLower();
+
+            //this is used for making sure the last part of the query does not contain 'UNION ALL'
             int size = tableNames.Length;
 
             StringBuilder builder = new StringBuilder();
 
+            
             foreach (string table in tableNames)
             {
                 builder.Append("SELECT name FROM " + table + " ");
-                builder.Append("WHERE lower(name) like '%" + word + "%' ");
+                builder.Append("WHERE lower(name) like '%" + wordLowercase + "%' ");
 
                 if (size > 1)
                 {
