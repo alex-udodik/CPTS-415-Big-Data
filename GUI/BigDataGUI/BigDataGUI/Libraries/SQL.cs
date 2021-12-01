@@ -72,7 +72,7 @@ namespace BigDataGUI.Libraries
             
             foreach (string table in tableNames)
             {
-                builder.Append("SELECT name FROM " + table + " ");
+                builder.Append("SELECT distinct name FROM " + table + " ");
                 builder.Append("WHERE lower(name) like '%" + wordLowercase + "%' ");
 
                 if (size > 1)
