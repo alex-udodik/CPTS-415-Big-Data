@@ -114,7 +114,76 @@ namespace BigDataGUI
                 y += 25;
             }
             */
-            Console.WriteLine();
+
+            string name = "";
+
+            foreach (DataRow row in processedItemDetails.Rows)
+            {
+                if (row["Attribute"].ToString().ToLower() == "name")
+                {
+                    name = row["Value"].ToString();
+                }
+            }
+
+            string parseName = convertNameForURL_LookUp(name);
+            string wikiLink = getUrlFromItemName(parseName);
+
+            linkLabelWiki.Text = wikiLink;
+            linkLabelWiki.LinkArea = new LinkArea(0, wikiLink.Length);
+        }
+
+        private string convertNameForURL_LookUp(string name)
+        {
+            StringBuilder builder = new StringBuilder();
+            bool beginning = true;
+            string previous = name[0].ToString();
+
+            foreach (char c in name)
+            {
+                string character = c.ToString();
+
+                if (beginning == true)
+                {
+                    builder.Append(character.ToUpper());
+                    beginning = false;
+                }
+                else
+                {
+                    if (character == " ")
+                    {
+                        builder.Append("_");
+                    }
+                    else if (previous == "-" || previous == " ")
+                    {
+                        builder.Append(character.ToUpper());
+                    }
+                    
+                    else
+                    {
+                        builder.Append(character);
+                    }
+                }
+
+                previous = character;
+            }
+
+            return builder.ToString();
+        }
+
+        private string getUrlFromItemName(string parsedName)
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.Append("https://nookipedia.com/wiki/Item:" + parsedName + "_(New_Horizons)");
+            return builder.ToString();
+        }
+
+        private void linkLabelWiki_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (linkLabelWiki.Text.ToString().Length > 0)
+            {
+                System.Diagnostics.Process.Start(linkLabelWiki.Text.ToString());
+            }
+            
         }
     }
 }

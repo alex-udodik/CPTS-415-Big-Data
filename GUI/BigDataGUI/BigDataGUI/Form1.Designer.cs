@@ -47,6 +47,7 @@ namespace BigDataGUI
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridViewItemDetails = new System.Windows.Forms.DataGridView();
+            this.linkLabelWiki = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchResultsLeft)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -222,6 +223,7 @@ namespace BigDataGUI
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.linkLabelWiki);
             this.groupBox2.Controls.Add(this.dataGridViewItemDetails);
             this.groupBox2.Controls.Add(this.dataGridViewSearchResultsLeft);
             this.groupBox2.Controls.Add(this.label3);
@@ -239,6 +241,15 @@ namespace BigDataGUI
             this.dataGridViewItemDetails.Name = "dataGridViewItemDetails";
             this.dataGridViewItemDetails.Size = new System.Drawing.Size(510, 663);
             this.dataGridViewItemDetails.TabIndex = 7;
+            // 
+            // linkLabelWiki
+            // 
+            this.linkLabelWiki.AutoSize = true;
+            this.linkLabelWiki.Location = new System.Drawing.Point(632, 21);
+            this.linkLabelWiki.Name = "linkLabelWiki";
+            this.linkLabelWiki.Size = new System.Drawing.Size(0, 13);
+            this.linkLabelWiki.TabIndex = 8;
+            this.linkLabelWiki.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelWiki_LinkClicked);
             // 
             // Form1
             // 
@@ -281,6 +292,7 @@ namespace BigDataGUI
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dataGridViewItemDetails;
+        private System.Windows.Forms.LinkLabel linkLabelWiki;
     }
 }
 
