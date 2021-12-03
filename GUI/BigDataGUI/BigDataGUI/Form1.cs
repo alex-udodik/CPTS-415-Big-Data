@@ -117,6 +117,7 @@ namespace BigDataGUI
 
             string name = "";
 
+            //try and find the name value in item details
             foreach (DataRow row in processedItemDetails.Rows)
             {
                 if (row["Attribute"].ToString().ToLower() == "name")
@@ -125,13 +126,20 @@ namespace BigDataGUI
                 }
             }
 
+            //parse the name to be fit into a url
             string parseName = convertNameForURL_LookUp(name);
+
+            //construct the link with the newly parsed name
             string wikiLink = getUrlFromItemName(parseName);
 
+            //set the linklabel text to the link
             linkLabelWiki.Text = wikiLink;
             linkLabelWiki.LinkArea = new LinkArea(0, wikiLink.Length);
         }
 
+
+        //this parses a name so it can be fit into a url. basically capitilizes the first
+        //char in each word and makes empty spaces underscores.
         private string convertNameForURL_LookUp(string name)
         {
             StringBuilder builder = new StringBuilder();
@@ -170,6 +178,7 @@ namespace BigDataGUI
             return builder.ToString();
         }
 
+        //contructs a url from a parsed name
         private string getUrlFromItemName(string parsedName)
         {
             StringBuilder builder = new StringBuilder();
@@ -177,6 +186,7 @@ namespace BigDataGUI
             return builder.ToString();
         }
 
+        //when link label is clicked on, open in browser.
         private void linkLabelWiki_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (linkLabelWiki.Text.ToString().Length > 0)
