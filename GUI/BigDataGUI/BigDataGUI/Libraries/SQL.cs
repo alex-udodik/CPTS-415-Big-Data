@@ -45,7 +45,6 @@ namespace BigDataGUI.Libraries
                             
                             return null;
                         }
-
                     }
                 }
 
@@ -72,7 +71,7 @@ namespace BigDataGUI.Libraries
             
             foreach (string table in tableNames)
             {
-                builder.Append("SELECT distinct name FROM " + table + " ");
+                builder.Append("SELECT distinct name, UniqueEntryID FROM " + table + " ");
                 builder.Append("WHERE lower(name) like '%" + wordLowercase + "%' ");
 
                 if (size > 1)
@@ -83,7 +82,14 @@ namespace BigDataGUI.Libraries
                 size--;
             }
 
+            
             return builder.ToString();
+        }
+
+        public string getItemInfo(string UniqueEntryID)
+        {
+
+            return "";
         }
     }
 }

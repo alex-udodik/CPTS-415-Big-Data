@@ -13,6 +13,8 @@ namespace BigDataGUI
 {
     public partial class Form1 : Form
     {
+        private DataTable searchResults;
+
         public Form1()
         {
             InitializeComponent();
@@ -28,13 +30,26 @@ namespace BigDataGUI
                 SQL sql = new SQL();
                 string query = sql.executeSearch(word);
 
-                DataTable table = sql.execute(query);
-                dataGridViewSearchResultsLeft.DataSource = table;
+                DataTable original_table = sql.execute(query);
+                DataTable modified_table = original_table.Copy();
+                searchResults = original_table.Copy();
+                modified_table.Columns.Remove("UniqueEntryID");
+
+                dataGridViewSearchResultsLeft.DataSource = modified_table;
             }
             else
             {
                 Console.WriteLine("Other button pressed");
             }
+        }
+
+
+        // if there are search results and a cell is clicked, this will inititate.
+        private void dataGridViewSearchResultsLeft_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = dataGridViewSearchResultsLeft.CurrentCell.RowIndex;
+            string id = searchResults.Rows[rowIndex][1].ToString();
+            Console.WriteLine();
         }
     }
 }

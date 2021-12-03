@@ -68,6 +68,7 @@ namespace BigDataGUI
             this.dataGridViewSearchResultsLeft.Name = "dataGridViewSearchResultsLeft";
             this.dataGridViewSearchResultsLeft.Size = new System.Drawing.Size(510, 663);
             this.dataGridViewSearchResultsLeft.TabIndex = 1;
+            this.dataGridViewSearchResultsLeft.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSearchResultsLeft_CellClick);
             // 
             // searchTextBox
             // 
