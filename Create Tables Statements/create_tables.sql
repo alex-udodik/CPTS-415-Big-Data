@@ -388,6 +388,7 @@ CREATE TABLE Miscellaneous (
     Outdoor BOOLEAN,
     SpeakerType VARCHAR(255),
     LightingType VARCHAR(255),
+	Catalog VARCHAR(255),
     Filename VARCHAR(255),
     VariantID VARCHAR(255),
     InternalID VARCHAR(255),

@@ -78,8 +78,15 @@ def parseAccessories():
             str2 += "'" + str(lines[21]) + "')"
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Accessories', " + "'" + str(lines[21] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
+
+        
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -147,8 +154,14 @@ def parseAchievements():
 
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Achievements', " + "'" + str(lines[20] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
+
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -232,8 +245,13 @@ def parseArt():
 
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Art', " + "'" + str(lines[25] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -304,8 +322,14 @@ def parseBags():
 
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Bags', " + "'" + str(lines[19] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
+
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -378,8 +402,14 @@ def parseBottoms():
             str2 += "'" + str(lines[19]) + "')"
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Bottoms', " + "'" + str(lines[19] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
+
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -418,8 +448,13 @@ def parseConstruction():
             str2 += "'" + str(lines[6]) + "')"
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Construction', " + "'" + str(lines[6] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -486,8 +521,14 @@ def parseDressUp():
 
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'DressUp', " + "'" + str(lines[21] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
+
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -536,8 +577,13 @@ def parseFencing():
 
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Fencing', " + "'" + str(lines[10] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -613,8 +659,13 @@ def parseFish():
             str2 += "'" + str(lines[40]) + "')"
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Fish', " + "'" + str(lines[40] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -701,8 +752,12 @@ def parseFloors():
             str2 += "'" + str(lines[18]) + "')"
 
             str3 = str1 + str2
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Floors', " + "'" + str(lines[18] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -754,8 +809,13 @@ def parseFossils():
 
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Fossils', " + "'" + str(lines[13] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -841,8 +901,14 @@ def parseHeadwear():
             str2 += "'" + str(lines[21]) + "')"
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Headwear', " + "'" + str(lines[21] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
+
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -963,8 +1029,13 @@ def parseHousewares():
 
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Housewares', " + "'" + str(lines[31] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -1044,8 +1115,14 @@ def parseInsects():
 
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Insects', " + "'" + str(lines[37] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
+
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -1073,7 +1150,7 @@ def parseMiscellaneous():
             str1 = "INSERT INTO Miscellaneous (Name,Variation,BodyTitle,Pattern" \
                    ",PatternTitle,DIY,BodyCustomize,PatternCustomize,KitCost,Buy" \
                    ",Sell,Color1,Color2,Size,Source,SourceNotes,Version,HHAConcept1,HHAConcept2,HHASeries,HHASet" \
-                   ",Interact,Tag,Outdoor,SpeakerType,LightingType,Filename,VariantID,InternalID" \
+                   ",Interact,Tag,Outdoor,SpeakerType,LightingType,Catalog,Filename,VariantID,InternalID" \
                    ",UniqueEntryID)" \
                    " VALUES ("
 
@@ -1161,16 +1238,18 @@ def parseMiscellaneous():
             str2 += "'" + str(lines[26]) + "',"
             str2 += "'" + str(lines[27]) + "',"
             str2 += "'" + str(lines[28]) + "',"
-            str2 += "'" + str(lines[29]) + "')"
-
-
-
-
+            str2 += "'" + str(lines[29]) + "',"
+            str2 += "'" + str(lines[30]) + "')"
 
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Miscellaneous', " + "'" + str(lines[30] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -1234,8 +1313,13 @@ def parseMusic():
             str2 += "'" + str(lines[12]) + "')"
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Music', " + "'" + str(lines[12] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -1304,8 +1388,14 @@ def parseOther():
             str2 += "'" + str(lines[14]) + "')"
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Other', " + "'" + str(lines[14] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
+
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -1366,8 +1456,14 @@ def parsePhotos():
             str2 += "'" + str(lines[19]) + "')"
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Photos', " + "'" + str(lines[19] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
+
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -1430,8 +1526,14 @@ def parsePosters():
             str2 += "'" + str(lines[12]) + "')"
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Posters', " + "'" + str(lines[12] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
+
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -1469,8 +1571,14 @@ def parseReactions():
             str2 += "'" + str(lines[4]) + "')"
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Reactions', " + "'" + str(lines[4] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
+
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -1545,8 +1653,15 @@ def parseRecipes():
             str2 += "'" + str(lines[23]) + "')"
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Recipes', " + "'" + str(lines[23] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
+
+
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -1619,8 +1734,14 @@ def parseRugs():
             str2 += "'" + str(lines[18]) + "')"
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Rugs', " + "'" + str(lines[18] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
+
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -1707,8 +1828,14 @@ def parseShoes():
             str2 += "'" + str(lines[20]) + "')"
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Shoes', " + "'" + str(lines[20] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
+
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -1795,8 +1922,14 @@ def parseSocks():
             str2 += "'" + str(lines[20]) + "')"
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Socks', " + "'" + str(lines[20] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
+
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -1872,8 +2005,15 @@ def parseTools():
             str2 += "'" + str(lines[21]) + "')"
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Tools', " + "'" + str(lines[21] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
+
+
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -1946,8 +2086,14 @@ def parseTops():
 
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Tops', " + "'" + str(lines[20] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
+
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -2015,8 +2161,14 @@ def parseUmbrellas():
 
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Umbrellas', " + "'" + str(lines[15] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
+
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -2090,8 +2242,14 @@ def parseVillagers():
             str2 += "'" + str(lines[16]) + "')"
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Villagers', " + "'" + str(lines[16] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
+
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -2202,8 +2360,14 @@ def parseWallMounted():
 
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'WallMounted', " + "'" + str(lines[30] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
+
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
@@ -2290,8 +2454,14 @@ def parseWallpaper():
 
 
             str3 = str1 + str2
+
+            mapstr1 = "INSERT INTO Mapping (tableName, UniqueEntryID) VALUES ("
+            mapstr2 = "'Wallpaper', " + "'" + str(lines[25] + "'" + ")")
+            mapstr3 = " " + mapstr1 + mapstr2
+
             try:
                 cur.execute(str3)
+                cur.execute(mapstr3)
             except:
                 print("Insert to accessories failed for: " + str(lineNumber) + " " + str3)
 
