@@ -36,6 +36,7 @@ namespace BigDataGUI
                 modified_table.Columns.Remove("UniqueEntryID");
 
                 dataGridViewSearchResultsLeft.DataSource = modified_table;
+                dataGridViewSearchResultsLeft.Columns[0].Width = 200;
             }
             else
             {
@@ -87,9 +88,12 @@ namespace BigDataGUI
                 processedItemDetails.Rows.Add(row);
             }
 
+            
+
             //once the table is built, pop it into the datagridview box.
             dataGridViewItemDetails.DataSource = processedItemDetails;
-
+            dataGridViewItemDetails.Columns[0].Width = 150;
+            dataGridViewItemDetails.Columns[1].Width = 350;
 
             //this is old code for dynamically adding labels to a groupbox. It works cool but if there text of an attribute value
             //is too long (description), it will push labels off the group box. There is no scroll bar. Idk how to make it
