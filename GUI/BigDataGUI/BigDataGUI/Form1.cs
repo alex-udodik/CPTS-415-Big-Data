@@ -49,12 +49,15 @@ namespace BigDataGUI
         {
             //groupBoxItemDetails.Controls.Clear();
 
+            //the rowindex of the cell that was clicked.
             int rowIndex = dataGridViewSearchResultsLeft.CurrentCell.RowIndex;
+
+            //the id of the item. The grid doesnt show it, but searchResults does (it's defined at the top and used on line 35)
             string id = searchResults.Rows[rowIndex][1].ToString();
 
             SQL sql = new SQL();
 
-            //this table will hold the tableName for the ID. We need the table for a simple lookup
+            //this table will hold the tableName for the ID. We need the table name for a simple lookup. The mapping table in the schema is handy for this.
             DataTable mappedPair = sql.execute("select tableName from Mapping where uniqueentryid = '" + id + "'");
             string tableName = mappedPair.Rows[0][0].ToString();
 
