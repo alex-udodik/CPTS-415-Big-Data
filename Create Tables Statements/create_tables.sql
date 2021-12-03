@@ -723,3 +723,9 @@ CREATE TABLE Wallpaper (
     InternalID INTEGER,
     UniqueEntryID VARCHAR(255) UNIQUE
 );
+
+
+CREATE TABLE Mapping (
+	tableName VARCHAR(255),
+	UniqueEntryID VARCHAR(255)
+)
