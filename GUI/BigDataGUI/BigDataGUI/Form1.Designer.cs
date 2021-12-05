@@ -46,8 +46,9 @@ namespace BigDataGUI
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridViewItemDetails = new System.Windows.Forms.DataGridView();
             this.linkLabelWiki = new System.Windows.Forms.LinkLabel();
+            this.dataGridViewItemDetails = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchResultsLeft)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -223,6 +224,7 @@ namespace BigDataGUI
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.linkLabelWiki);
             this.groupBox2.Controls.Add(this.dataGridViewItemDetails);
             this.groupBox2.Controls.Add(this.dataGridViewSearchResultsLeft);
@@ -234,14 +236,6 @@ namespace BigDataGUI
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             // 
-            // dataGridViewItemDetails
-            // 
-            this.dataGridViewItemDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewItemDetails.Location = new System.Drawing.Point(527, 41);
-            this.dataGridViewItemDetails.Name = "dataGridViewItemDetails";
-            this.dataGridViewItemDetails.Size = new System.Drawing.Size(510, 663);
-            this.dataGridViewItemDetails.TabIndex = 7;
-            // 
             // linkLabelWiki
             // 
             this.linkLabelWiki.AutoSize = true;
@@ -250,6 +244,23 @@ namespace BigDataGUI
             this.linkLabelWiki.Size = new System.Drawing.Size(0, 13);
             this.linkLabelWiki.TabIndex = 8;
             this.linkLabelWiki.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelWiki_LinkClicked);
+            // 
+            // dataGridViewItemDetails
+            // 
+            this.dataGridViewItemDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewItemDetails.Location = new System.Drawing.Point(527, 41);
+            this.dataGridViewItemDetails.Name = "dataGridViewItemDetails";
+            this.dataGridViewItemDetails.Size = new System.Drawing.Size(510, 547);
+            this.dataGridViewItemDetails.TabIndex = 7;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(527, 616);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(99, 43);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Add to Own Content";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -293,6 +304,7 @@ namespace BigDataGUI
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dataGridViewItemDetails;
         private System.Windows.Forms.LinkLabel linkLabelWiki;
+        private System.Windows.Forms.Button button1;
     }
 }
 

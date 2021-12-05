@@ -95,7 +95,7 @@ namespace BigDataGUI
             dataGridViewItemDetails.Columns[0].Width = 150;
             dataGridViewItemDetails.Columns[1].Width = 350;
 
-            //this is old code for dynamically adding labels to a groupbox. It works cool but if there text of an attribute value
+            //this is old code for dynamically adding labels to a groupbox. It works cool but if the text of an attribute value
             //is too long (description), it will push labels off the group box. There is no scroll bar. Idk how to make it
             // 
             /*
@@ -183,6 +183,7 @@ namespace BigDataGUI
         {
             StringBuilder builder = new StringBuilder();
             builder.Append("https://nookipedia.com/wiki/Item:" + parsedName + "_(New_Horizons)");
+            //builder.Append("https://nookipedia.com/wiki/" + parsedName);
             return builder.ToString();
         }
 
