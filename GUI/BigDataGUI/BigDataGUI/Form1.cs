@@ -15,9 +15,15 @@ namespace BigDataGUI
     {
         private DataTable searchResults;
 
+        string[] tableNames = { "accessories", "achievements", "art", "bags", "bottoms", "construction", "dressup", "fencing", "fish", "floors", "headwear",
+                                            "housewares", "insects", "miscellaneous", "music", "other", "photos", "posters", "reactions", "recipes", "rugs", "shoes",
+                                            "socks", "tools", "tops", "umbrellas", "villagers", "wallmounted", "wallpaper"};
+
         public Form1()
         {
             InitializeComponent();
+
+            fillComboBox();
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
@@ -195,6 +201,14 @@ namespace BigDataGUI
                 System.Diagnostics.Process.Start(linkLabelWiki.Text.ToString());
             }
             
+        }
+
+        private void fillComboBox()
+        {
+            foreach(string table in tableNames)
+            {
+                comboBoxSearch.Items.Add(table);
+            }
         }
     }
 }
