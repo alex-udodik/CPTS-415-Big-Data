@@ -18,7 +18,7 @@ namespace BigDataGUI
         public Form1()
         {
             InitializeComponent();
-            xmlHandler.LoadXML("ACNH_Stats");
+            xmlHandler.LoadXML("ACNH_OwnedContent");
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
