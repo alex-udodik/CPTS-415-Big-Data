@@ -14,10 +14,11 @@ namespace BigDataGUI
     public partial class Form1 : Form
     {
         private DataTable searchResults;
-
+        private XMLHandler xmlHandler = new XMLHandler();
         public Form1()
         {
             InitializeComponent();
+            xmlHandler.LoadXML("ACNH_Stats");
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
@@ -87,8 +88,19 @@ namespace BigDataGUI
                 row[1] = cellValue.ToString();
                 processedItemDetails.Rows.Add(row);
             }
-
             
+            DataRow owned = processedItemDetails.NewRow();
+            owned[0] = "Owned";
+            if(!checkIfOwned(id))
+            {
+                owned[1] = "No";
+            } 
+            else
+            {
+                owned[1] = "Yes";
+            }
+            processedItemDetails.Rows.Add(owned);
+
 
             //once the table is built, pop it into the datagridview box.
             dataGridViewItemDetails.DataSource = processedItemDetails;
@@ -195,6 +207,46 @@ namespace BigDataGUI
                 System.Diagnostics.Process.Start(linkLabelWiki.Text.ToString());
             }
             
+        }
+
+        // info for the XMLHandler
+        private XMLItem createInfoForXML()
+        {
+            //the rowindex of the cell that was clicked.
+            int rowIndex = dataGridViewSearchResultsLeft.CurrentCell.RowIndex;
+
+            //the id of the item. The grid doesnt show it, but searchResults does (it's defined at the top and used on line 35)
+            string id = searchResults.Rows[rowIndex][1].ToString();
+
+            // the name of the item.
+            string name = searchResults.Rows[rowIndex][0].ToString();
+
+            SQL sql = new SQL();
+
+            //this table will hold the tableName for the ID.
+            DataTable mappedPair = sql.execute("select tableName from Mapping where uniqueentryid = '" + id + "'");
+            string tableName = mappedPair.Rows[0][0].ToString();
+
+            XMLItem info = new XMLItem(id, name, tableName);
+
+            return info;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            xmlHandler.addToOwnedContent(createInfoForXML());
+            dataGridViewSearchResultsLeft_CellClick(dataGridViewItemDetails, null);
+        }
+
+        private bool checkIfOwned(string key)
+        {
+            return xmlHandler.checkIfOwned(key);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            xmlHandler.removeFromOwnedContent(createInfoForXML().ID());
+            dataGridViewSearchResultsLeft_CellClick(dataGridViewItemDetails, null);
         }
     }
 }
