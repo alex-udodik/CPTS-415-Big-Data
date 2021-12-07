@@ -15,7 +15,7 @@ namespace BigDataGUI
     {
         private DataTable searchResults;
 
-        string[] tableNames = { "accessories", "achievements", "art", "bags", "bottoms", "construction", "dressup", "fencing", "fish", "floors", "headwear",
+        string[] tableNames = { "all", "accessories", "achievements", "art", "bags", "bottoms", "construction", "dressup", "fencing", "fish", "floors", "headwear",
                                             "housewares", "insects", "miscellaneous", "music", "other", "photos", "posters", "reactions", "recipes", "rugs", "shoes",
                                             "socks", "tools", "tops", "umbrellas", "villagers", "wallmounted", "wallpaper"};
 
@@ -34,9 +34,20 @@ namespace BigDataGUI
 
                 string word = searchTextBox.Text.ToString();
                 SQL sql = new SQL();
-                string query = sql.executeSearch(word);
+                StringBuilder query = new StringBuilder();
 
-                DataTable original_table = sql.execute(query);
+                if (comboBoxSearch.SelectedIndex == 0)
+                {
+                    query.Append(sql.executeSearch(word));
+                }
+                else
+                {
+                    string category = comboBoxSearch.SelectedItem.ToString();
+                    query.Append(sql.getQueryForFilterByCategorySearch(word, category));
+                }
+
+               
+                DataTable original_table = sql.execute(query.ToString());
                 DataTable modified_table = original_table.Copy();
                 searchResults = original_table.Copy();
                 modified_table.Columns.Remove("UniqueEntryID");
@@ -209,6 +220,7 @@ namespace BigDataGUI
             {
                 comboBoxSearch.Items.Add(table);
             }
+            comboBoxSearch.SelectedIndex = 0;
         }
     }
 }

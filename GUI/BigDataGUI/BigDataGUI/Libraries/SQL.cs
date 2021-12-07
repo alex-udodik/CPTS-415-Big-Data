@@ -86,10 +86,14 @@ namespace BigDataGUI.Libraries
             return builder.ToString();
         }
 
-        public string getItemInfo(string UniqueEntryID)
+        public string getQueryForFilterByCategorySearch(string word, string table)
         {
+            string wordLowercase = word.ToLower();
 
-            return "";
+            string query = "SELECT distinct name, UniqueEntryID FROM " + table +
+                " where lower(name) like '%" + wordLowercase + "%'";
+            
+            return query;
         }
     }
 }
