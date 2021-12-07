@@ -58,7 +58,8 @@ namespace BigDataGUI.Libraries
 		{
 			this.currentFile = name;
 			string fileName = "\\" + name + ".xml";
-			string path = Directory.GetCurrentDirectory() + fileName;
+			string path = Directory.GetCurrentDirectory().Replace("bin\\Debug", "");
+			path += fileName;
 			XmlDocument doc = new XmlDocument();
 			doc = this.UpdateXML(doc);
 			if (!File.Exists(path))
@@ -85,7 +86,7 @@ namespace BigDataGUI.Libraries
 			if (exists == false)
 			{
 				this.ownedContent.Add(info);
-				SaveXML("ACNH_Stats");
+				SaveXML("ACNH_OwnedContent");
 			}
 		}
 
@@ -114,10 +115,14 @@ namespace BigDataGUI.Libraries
 		{
 			this.currentFile = name;
 			string fileName = "\\" + name + ".xml";
-			string path = Directory.GetCurrentDirectory() + fileName;
+			string path = Directory.GetCurrentDirectory().Replace("bin\\Debug", "");
+			path += fileName;
 			XmlDocument doc = new XmlDocument();
-			doc.Load(path);
-			this.readXML(doc);
+			if(File.Exists(path))
+			{
+				doc.Load(path);
+				this.readXML(doc);
+			}
 			return doc;
 		}
 
