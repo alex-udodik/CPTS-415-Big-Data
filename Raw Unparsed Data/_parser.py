@@ -3,7 +3,7 @@ import psycopg2
 from timeit import default_timer as timer
 
 
-database_credentials = "dbname='415BigData' user='postgres' host='localhost' password='password'"
+database_credentials = "dbname='415BigData' user='postgres' host='localhost' password='Code1Lock1'"
 
 def parseAccessories():
     with open('Accessories.csv', mode='r', encoding="utf8") as file:
