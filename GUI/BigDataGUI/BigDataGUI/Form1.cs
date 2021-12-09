@@ -72,37 +72,7 @@ namespace BigDataGUI
                 modified_table.Columns.Remove("UniqueEntryID");
 
                 dataGridViewSearchResultsLeft.DataSource = modified_table;
-                dataGridViewSearchResultsLeft.Columns[0].Width = 200;
-
-
-                /*
-                if (comboBoxSearch.SelectedIndex == 0)
-                {
-                    query.Append(sql.executeSearch(word));
-                }
-                else
-                {
-                    string category = comboBoxSearch.SelectedItem.ToString();
-                    query.Append(sql.getQueryForFilterByCategorySearch(word, category));
-                }
-
-
-                DataTable original_table = sql.execute(query.ToString());
-                DataTable modified_table = original_table.Copy();
-                searchResults = original_table.Copy();
-                modified_table.Columns.Remove("UniqueEntryID");
-
-                dataGridViewSearchResultsLeft.DataSource = modified_table;
-                dataGridViewSearchResultsLeft.Columns[0].Width = 200;
-
-                */
-
-                //dataGridViewSearchResultsLeft.DataSource = modified_table;
-                //dataGridViewSearchResultsLeft.Columns[0].Width = 200;
-            }
-            else
-            {
-                Console.WriteLine("Other button pressed");
+                dataGridViewSearchResultsLeft.Columns[0].Width = 200;  
             }
         }
 
@@ -168,26 +138,7 @@ namespace BigDataGUI
             dataGridViewItemDetails.Columns[0].Width = 150;
             dataGridViewItemDetails.Columns[1].Width = 350;
 
-            //this is old code for dynamically adding labels to a groupbox. It works cool but if the text of an attribute value
-            //is too long (description), it will push labels off the group box. There is no scroll bar. Idk how to make it
-            // 
-            /*
-            int y = 20;
-            for (int i = 0; i < columns; i++)
-            {
-                var cellValue = itemDetails.Rows[0][i];
-
-                //create a new label in the form of {attribute_name: attribute_value} and add to groupbox
-                Label label = new Label { Text = itemDetails.Columns[i].ColumnName + ": " + cellValue.ToString() };
-                label.Location = new Point(20, y);
-                label.Font = new Font("Microsoft Sans Serif", 11);
-
-                //groupBoxItemDetails.Controls.Add(label);
-
-                y += 25;
-            }
-            */
-
+           
             string name = "";
 
             //try and find the name value in item details
