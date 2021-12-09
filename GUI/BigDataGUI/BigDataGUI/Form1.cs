@@ -297,5 +297,46 @@ namespace BigDataGUI
             comboBox1.SelectedIndex = 0;
 
         }
+
+        private void comboBoxSearch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string currentSelection = comboBoxSearch.GetItemText(comboBoxSearch.SelectedItem);
+            
+            if(currentSelection != "all")
+            {
+                SQL sql = new SQL();
+
+                DataTable currentTable = sql.execute("select * from " + currentSelection);
+
+                bool colorExists = checkIfColorExists(currentTable);
+
+                if (colorExists)
+                {
+                    comboBox1.Enabled = true;
+                }
+                else
+                {
+                    comboBox1.SelectedIndex = 0;
+                    comboBox1.Enabled = false;
+                }
+            }
+            
+        }
+
+        private bool checkIfColorExists(DataTable table)
+        {
+            bool colorExists = false;
+
+            foreach (DataColumn column in table.Columns)
+            {
+                string columnName = column.ColumnName;
+
+                if (columnName.Contains("color"))
+                {
+                    colorExists = true;
+                }
+            }
+            return colorExists;
+        }
     }
 }

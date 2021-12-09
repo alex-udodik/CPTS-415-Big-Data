@@ -75,3 +75,41 @@ C:\Users\ksuza\OneDrive\Desktop\415\New folder\CPTS-415-Big-Data\GUI\BigDataGUI\
 C:\Users\ksuza\OneDrive\Desktop\415\New folder\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\obj\Debug\BigDataGUI.csproj.CopyComplete
 C:\Users\ksuza\OneDrive\Desktop\415\New folder\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\obj\Debug\BigDataGUI.exe
 C:\Users\ksuza\OneDrive\Desktop\415\New folder\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\obj\Debug\BigDataGUI.pdb
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\BigDataGUI.exe.config
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\BigDataGUI.exe
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\BigDataGUI.pdb
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\Microsoft.Bcl.HashCode.dll
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\Npgsql.dll
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\System.Buffers.dll
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\System.Collections.Immutable.dll
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\System.Memory.dll
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\System.Text.Json.dll
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\System.Threading.Channels.dll
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\System.ValueTuple.dll
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\Microsoft.Bcl.HashCode.xml
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\Npgsql.xml
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\System.Buffers.xml
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\System.Collections.Immutable.xml
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\System.Memory.xml
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\System.Text.Json.xml
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\System.Threading.Channels.xml
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\bin\Debug\System.ValueTuple.xml
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\obj\Debug\BigDataGUI.csprojAssemblyReference.cache
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\obj\Debug\BigDataGUI.Form1.resources
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\obj\Debug\BigDataGUI.Properties.Resources.resources
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\obj\Debug\BigDataGUI.csproj.GenerateResource.cache
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\obj\Debug\BigDataGUI.csproj.CopyComplete
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\obj\Debug\BigDataGUI.exe
+C:\Users\ksuza\OneDrive\Desktop\415\CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI\obj\Debug\BigDataGUI.pdb
