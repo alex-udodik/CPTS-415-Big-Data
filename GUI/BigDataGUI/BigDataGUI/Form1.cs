@@ -29,15 +29,36 @@ namespace BigDataGUI
 
                 string word = searchTextBox.Text.ToString();
                 SQL sql = new SQL();
-                string query = sql.executeSearch(word);
+                if (comboBox1.SelectedIndex != 0)
+                {
+                    string query = sql.searchColor(comboBox1.Text.ToString(), word);
+                    DataTable original_table = sql.execute(query);
+                    DataTable modified_table = original_table.Copy();
+                    searchResults = original_table.Copy();
+                    modified_table.Columns.Remove("UniqueEntryID");
 
-                DataTable original_table = sql.execute(query);
-                DataTable modified_table = original_table.Copy();
-                searchResults = original_table.Copy();
-                modified_table.Columns.Remove("UniqueEntryID");
+                    dataGridViewSearchResultsLeft.DataSource = modified_table;
+                    dataGridViewSearchResultsLeft.Columns[0].Width = 200;
 
-                dataGridViewSearchResultsLeft.DataSource = modified_table;
-                dataGridViewSearchResultsLeft.Columns[0].Width = 200;
+                }
+                else
+                {
+                    string query = sql.executeSearch(word);
+                    DataTable original_table = sql.execute(query);
+                    DataTable modified_table = original_table.Copy();
+                    searchResults = original_table.Copy();
+                    modified_table.Columns.Remove("UniqueEntryID");
+
+                    dataGridViewSearchResultsLeft.DataSource = modified_table;
+                    dataGridViewSearchResultsLeft.Columns[0].Width = 200;
+                }
+                //DataTable original_table = sql.execute(query);
+                //DataTable modified_table = original_table.Copy();
+                //searchResults = original_table.Copy();
+                //modified_table.Columns.Remove("UniqueEntryID");
+
+                //dataGridViewSearchResultsLeft.DataSource = modified_table;
+                //dataGridViewSearchResultsLeft.Columns[0].Width = 200;
             }
             else
             {
@@ -247,6 +268,14 @@ namespace BigDataGUI
         {
             xmlHandler.removeFromOwnedContent(createInfoForXML().ID());
             dataGridViewSearchResultsLeft_CellClick(dataGridViewItemDetails, null);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex != 0)
+            {
+
+            }
         }
     }
 }

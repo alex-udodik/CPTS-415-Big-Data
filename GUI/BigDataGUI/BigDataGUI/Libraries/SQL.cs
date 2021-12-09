@@ -91,5 +91,54 @@ namespace BigDataGUI.Libraries
 
             return "";
         }
+
+        // creats a sql statement to search for a kind of color
+        //
+        public string searchColor(string color, string word)
+        {
+            string[] colorTable = {"accessories", "art", "bags", "bottoms", "dressup","fish","floors","fossils","headwear","housewares","insects","miscellaneous",
+              "music","other","photos","posters","rugs","shoes","socks","tools","tops","umbrellas","villagers","wallmounted","wallpaper" };
+
+            int size = colorTable.Length;
+
+            StringBuilder builder = new StringBuilder();
+
+            if (word == "")
+            {
+                foreach (string table in colorTable)
+                {
+                    builder.Append("SELECT distinct name, UniqueEntryID FROM " + table + " ");
+                    builder.Append("WHERE lower(color1) like '%" + color + "%' or lower(color2) like '%" + color + "%' ");
+
+                    if (size > 1)
+                    {
+                        builder.Append("UNION ALL ");
+                    }
+
+                    size--;
+                }
+
+            }
+            else
+            {
+
+                foreach (string table in colorTable)
+                {
+
+                    builder.Append("SELECT distinct name, UniqueEntryID FROM " + table + " ");
+                    builder.Append("WHERE lower(name) like '%" + word + "%' and ( lower(color1) like '%" + color + "%' or lower(color2) like '%" + color + "%') ");
+
+                    if (size > 1)
+                    {
+                        builder.Append("UNION ALL ");
+                    }
+
+                    size--;
+                }
+            }
+
+            return builder.ToString();
+        }
     }
 }
+
