@@ -15,10 +15,18 @@ namespace BigDataGUI
     {
         private DataTable searchResults;
         private XMLHandler xmlHandler = new XMLHandler();
+        private StatsHandler statsHandler;
+
+        string[] tableNames = { "all", "accessories", "achievements", "art", "bags", "bottoms", "construction", "dressup", "fencing", "fish", "floors", "headwear",
+                                            "housewares", "insects", "miscellaneous", "music", "other", "photos", "posters", "reactions", "recipes", "rugs", "shoes",
+                                            "socks", "tools", "tops", "umbrellas", "villagers", "wallmounted", "wallpaper"};
+
         public Form1()
         {
             InitializeComponent();
             xmlHandler.LoadXML("ACNH_OwnedContent");
+            this.statsHandler = new StatsHandler(this.xmlHandler.getOwnedContent());
+            fillComboBox();
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
@@ -26,36 +34,68 @@ namespace BigDataGUI
             if (e.KeyData == Keys.Enter)
             {
                 Console.WriteLine("Enter pressed");
-
                 string word = searchTextBox.Text.ToString();
                 SQL sql = new SQL();
-                if (comboBox1.SelectedIndex != 0)
+                StringBuilder query = new StringBuilder();
+
+                // none selected
+                if (comboBox1.SelectedIndex == 0 && comboBoxSearch.SelectedIndex == 0)
                 {
-                    string query = sql.searchColor(comboBox1.Text.ToString(), word);
-                    DataTable original_table = sql.execute(query);
-                    DataTable modified_table = original_table.Copy();
-                    searchResults = original_table.Copy();
-                    modified_table.Columns.Remove("UniqueEntryID");
+                    query.Append(sql.executeSearch(word));
+                }
 
-                    dataGridViewSearchResultsLeft.DataSource = modified_table;
-                    dataGridViewSearchResultsLeft.Columns[0].Width = 200;
+                //category only selected
+                else if (comboBox1.SelectedIndex == 0 && comboBoxSearch.SelectedIndex != 0)
+                {
+                    string category = comboBoxSearch.SelectedItem.ToString();
+                    query.Append(sql.GetQueryForFilterByCategorySearch(word, category));
+                }
 
+                //color only selected
+                else if (comboBox1.SelectedIndex != 0 && comboBoxSearch.SelectedIndex == 0)
+                {
+                    query.Append(sql.searchColor(comboBox1.Text.ToString(), word));
+                }
+
+                //both are selected
+                else
+                {
+                    string category = comboBoxSearch.SelectedItem.ToString();
+                    string color = comboBox1.SelectedItem.ToString();
+
+                    query.Append(sql.searchColorAndCategory(color, word, category));
+                }
+                
+                DataTable original_table = sql.execute(query.ToString());
+                DataTable modified_table = original_table.Copy();
+                searchResults = original_table.Copy();
+                modified_table.Columns.Remove("UniqueEntryID");
+
+                dataGridViewSearchResultsLeft.DataSource = modified_table;
+                dataGridViewSearchResultsLeft.Columns[0].Width = 200;
+
+
+                /*
+                if (comboBoxSearch.SelectedIndex == 0)
+                {
+                    query.Append(sql.executeSearch(word));
                 }
                 else
                 {
-                    string query = sql.executeSearch(word);
-                    DataTable original_table = sql.execute(query);
-                    DataTable modified_table = original_table.Copy();
-                    searchResults = original_table.Copy();
-                    modified_table.Columns.Remove("UniqueEntryID");
-
-                    dataGridViewSearchResultsLeft.DataSource = modified_table;
-                    dataGridViewSearchResultsLeft.Columns[0].Width = 200;
+                    string category = comboBoxSearch.SelectedItem.ToString();
+                    query.Append(sql.getQueryForFilterByCategorySearch(word, category));
                 }
-                //DataTable original_table = sql.execute(query);
-                //DataTable modified_table = original_table.Copy();
-                //searchResults = original_table.Copy();
-                //modified_table.Columns.Remove("UniqueEntryID");
+
+
+                DataTable original_table = sql.execute(query.ToString());
+                DataTable modified_table = original_table.Copy();
+                searchResults = original_table.Copy();
+                modified_table.Columns.Remove("UniqueEntryID");
+
+                dataGridViewSearchResultsLeft.DataSource = modified_table;
+                dataGridViewSearchResultsLeft.Columns[0].Width = 200;
+
+                */
 
                 //dataGridViewSearchResultsLeft.DataSource = modified_table;
                 //dataGridViewSearchResultsLeft.Columns[0].Width = 200;
@@ -257,6 +297,7 @@ namespace BigDataGUI
         {
             xmlHandler.addToOwnedContent(createInfoForXML());
             dataGridViewSearchResultsLeft_CellClick(dataGridViewItemDetails, null);
+            this.statsHandler = new StatsHandler(this.xmlHandler.getOwnedContent());
         }
 
         private bool checkIfOwned(string key)
@@ -268,6 +309,7 @@ namespace BigDataGUI
         {
             xmlHandler.removeFromOwnedContent(createInfoForXML().ID());
             dataGridViewSearchResultsLeft_CellClick(dataGridViewItemDetails, null);
+            this.statsHandler = new StatsHandler(this.xmlHandler.getOwnedContent());
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -276,6 +318,33 @@ namespace BigDataGUI
             {
 
             }
+        }
+
+       
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.statsHandler.createStats(xmlHandler.getOwnedContent());
+        }
+
+        private void fillComboBox()
+        {
+            foreach (string table in tableNames)
+            {
+                comboBoxSearch.Items.Add(table);
+            }
+
+            comboBox1.Items.Add("none");
+            comboBox1.Items.Add("red");
+            comboBox1.Items.Add("blue");
+            comboBox1.Items.Add("green");
+            comboBox1.Items.Add("yellow");
+            comboBox1.Items.Add("black");
+            comboBox1.Items.Add("colorful");
+
+            comboBoxSearch.SelectedIndex = 0;
+            comboBox1.SelectedIndex = 0;
+
         }
     }
 }

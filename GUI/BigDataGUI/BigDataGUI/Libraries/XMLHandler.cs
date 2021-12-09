@@ -74,7 +74,7 @@ namespace BigDataGUI.Libraries
 		{
 			bool exists = false;
 			int i = 0;
-			while(i < this.ownedContent.Count)
+			while (i < this.ownedContent.Count)
 			{
 				if (this.ownedContent[i].ID() == info.ID())
 				{
@@ -118,7 +118,7 @@ namespace BigDataGUI.Libraries
 			string path = Directory.GetCurrentDirectory().Replace("bin\\Debug", "");
 			path += fileName;
 			XmlDocument doc = new XmlDocument();
-			if(File.Exists(path))
+			if (File.Exists(path))
 			{
 				doc.Load(path);
 				this.readXML(doc);
@@ -139,6 +139,11 @@ namespace BigDataGUI.Libraries
 			}
 
 			this.ownedContent = loadedContentList; // update the owned content list;
+		}
+
+		public List<XMLItem> getOwnedContent()
+		{
+			return this.ownedContent;
 		}
 
 		public bool checkIfOwned(string key)

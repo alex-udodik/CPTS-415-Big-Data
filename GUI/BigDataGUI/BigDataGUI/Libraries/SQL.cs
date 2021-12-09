@@ -117,7 +117,6 @@ namespace BigDataGUI.Libraries
 
                     size--;
                 }
-
             }
             else
             {
@@ -139,6 +138,64 @@ namespace BigDataGUI.Libraries
 
             return builder.ToString();
         }
+
+        public string searchColorAndCategory(string color, string word, string category)
+        {
+            string[] colorTable = {"accessories", "art", "bags", "bottoms", "dressup","fish","floors","fossils","headwear","housewares","insects","miscellaneous",
+              "music","other","photos","posters","rugs","shoes","socks","tools","tops","umbrellas","villagers","wallmounted","wallpaper" };
+
+
+            StringBuilder builder = new StringBuilder();
+            bool columnContainsColor = false;
+
+            //does the table contain color column
+            foreach(string table in colorTable)
+            {
+                if (table == category)
+                {
+                    columnContainsColor = true;
+                }
+            }
+
+            //if columnContainsColor is true
+            if (columnContainsColor)
+            {
+                //if word is empty
+                if (word == "")
+                {
+                    builder.Append("SELECT distinct name, UniqueEntryID FROM " + category + " ");
+                    builder.Append("WHERE lower(color1) like '%" + color + "%' or lower(color2) like '%" + color + "%' ");
+                }
+
+                //if not empty
+                else
+                {
+                    builder.Append("SELECT distinct name, UniqueEntryID FROM " + category + " ");
+                    builder.Append("WHERE lower(name) like '%" + word + "%' and ( lower(color1) like '%" + color + "%' or lower(color2) like '%" + color + "%') ");
+                }
+            }
+            else
+            {
+                //return nothing
+                builder.Append("SELECT distinct name, UniqueEntryID FROM " + category + " where name = '@@@@@@@-5000'");
+            }
+           
+
+            return builder.ToString();
+        }
+
+        
+        public string GetQueryForFilterByCategorySearch(string word, string table)
+        {
+            string wordLowercase = word.ToLower();
+
+            string query = "SELECT distinct name, UniqueEntryID FROM " + table +
+                " where lower(name) like '%" + wordLowercase + "%'";
+
+            return query;
+        }
     }
+
+   
 }
 
