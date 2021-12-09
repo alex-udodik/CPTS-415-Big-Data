@@ -15,10 +15,12 @@ namespace BigDataGUI
     {
         private DataTable searchResults;
         private XMLHandler xmlHandler = new XMLHandler();
+        private StatsHandler statsHandler;
         public Form1()
         {
             InitializeComponent();
             xmlHandler.LoadXML("ACNH_OwnedContent");
+            this.statsHandler = new StatsHandler(this.xmlHandler.getOwnedContent());
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
@@ -236,6 +238,7 @@ namespace BigDataGUI
         {
             xmlHandler.addToOwnedContent(createInfoForXML());
             dataGridViewSearchResultsLeft_CellClick(dataGridViewItemDetails, null);
+            this.statsHandler = new StatsHandler(this.xmlHandler.getOwnedContent());
         }
 
         private bool checkIfOwned(string key)
@@ -247,6 +250,12 @@ namespace BigDataGUI
         {
             xmlHandler.removeFromOwnedContent(createInfoForXML().ID());
             dataGridViewSearchResultsLeft_CellClick(dataGridViewItemDetails, null);
+            this.statsHandler = new StatsHandler(this.xmlHandler.getOwnedContent());
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.statsHandler.createStats(xmlHandler.getOwnedContent());
         }
     }
 }

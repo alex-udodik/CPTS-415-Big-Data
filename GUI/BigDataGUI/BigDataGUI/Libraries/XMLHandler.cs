@@ -141,6 +141,11 @@ namespace BigDataGUI.Libraries
 			this.ownedContent = loadedContentList; // update the owned content list;
 		}
 
+		public List<XMLItem> getOwnedContent() 
+		{
+			return this.ownedContent;
+		}
+
 		public bool checkIfOwned(string key)
 		{
 			bool exists = false;
