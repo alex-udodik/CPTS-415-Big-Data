@@ -14,10 +14,19 @@ namespace BigDataGUI
     public partial class Form1 : Form
     {
         private DataTable searchResults;
+        private XMLHandler xmlHandler = new XMLHandler();
+        private StatsHandler statsHandler;
+
+        string[] tableNames = { "all", "accessories", "achievements", "art", "bags", "bottoms", "construction", "dressup", "fencing", "fish", "floors", "headwear",
+                                            "housewares", "insects", "miscellaneous", "music", "other", "photos", "posters", "reactions", "recipes", "rugs", "shoes",
+                                            "socks", "tools", "tops", "umbrellas", "villagers", "wallmounted", "wallpaper"};
 
         public Form1()
         {
             InitializeComponent();
+            xmlHandler.LoadXML("ACNH_OwnedContent");
+            this.statsHandler = new StatsHandler(this.xmlHandler.getOwnedContent());
+            fillComboBox();
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
@@ -25,22 +34,45 @@ namespace BigDataGUI
             if (e.KeyData == Keys.Enter)
             {
                 Console.WriteLine("Enter pressed");
-
                 string word = searchTextBox.Text.ToString();
                 SQL sql = new SQL();
-                string query = sql.executeSearch(word);
+                StringBuilder query = new StringBuilder();
 
-                DataTable original_table = sql.execute(query);
+                // none selected
+                if (comboBox1.SelectedIndex == 0 && comboBoxSearch.SelectedIndex == 0)
+                {
+                    query.Append(sql.executeSearch(word));
+                }
+
+                //category only selected
+                else if (comboBox1.SelectedIndex == 0 && comboBoxSearch.SelectedIndex != 0)
+                {
+                    string category = comboBoxSearch.SelectedItem.ToString();
+                    query.Append(sql.GetQueryForFilterByCategorySearch(word, category));
+                }
+
+                //color only selected
+                else if (comboBox1.SelectedIndex != 0 && comboBoxSearch.SelectedIndex == 0)
+                {
+                    query.Append(sql.searchColor(comboBox1.Text.ToString(), word));
+                }
+
+                //both are selected
+                else
+                {
+                    string category = comboBoxSearch.SelectedItem.ToString();
+                    string color = comboBox1.SelectedItem.ToString();
+
+                    query.Append(sql.searchColorAndCategory(color, word, category));
+                }
+                
+                DataTable original_table = sql.execute(query.ToString());
                 DataTable modified_table = original_table.Copy();
                 searchResults = original_table.Copy();
                 modified_table.Columns.Remove("UniqueEntryID");
 
                 dataGridViewSearchResultsLeft.DataSource = modified_table;
-                dataGridViewSearchResultsLeft.Columns[0].Width = 200;
-            }
-            else
-            {
-                Console.WriteLine("Other button pressed");
+                dataGridViewSearchResultsLeft.Columns[0].Width = 200;  
             }
         }
 
@@ -87,34 +119,26 @@ namespace BigDataGUI
                 row[1] = cellValue.ToString();
                 processedItemDetails.Rows.Add(row);
             }
-
             
+            DataRow owned = processedItemDetails.NewRow();
+            owned[0] = "Owned";
+            if(!checkIfOwned(id))
+            {
+                owned[1] = "No";
+            } 
+            else
+            {
+                owned[1] = "Yes";
+            }
+            processedItemDetails.Rows.Add(owned);
+
 
             //once the table is built, pop it into the datagridview box.
             dataGridViewItemDetails.DataSource = processedItemDetails;
             dataGridViewItemDetails.Columns[0].Width = 150;
             dataGridViewItemDetails.Columns[1].Width = 350;
 
-            //this is old code for dynamically adding labels to a groupbox. It works cool but if the text of an attribute value
-            //is too long (description), it will push labels off the group box. There is no scroll bar. Idk how to make it
-            // 
-            /*
-            int y = 20;
-            for (int i = 0; i < columns; i++)
-            {
-                var cellValue = itemDetails.Rows[0][i];
-
-                //create a new label in the form of {attribute_name: attribute_value} and add to groupbox
-                Label label = new Label { Text = itemDetails.Columns[i].ColumnName + ": " + cellValue.ToString() };
-                label.Location = new Point(20, y);
-                label.Font = new Font("Microsoft Sans Serif", 11);
-
-                //groupBoxItemDetails.Controls.Add(label);
-
-                y += 25;
-            }
-            */
-
+           
             string name = "";
 
             //try and find the name value in item details
@@ -195,6 +219,124 @@ namespace BigDataGUI
                 System.Diagnostics.Process.Start(linkLabelWiki.Text.ToString());
             }
             
+        }
+
+        // info for the XMLHandler
+        private XMLItem createInfoForXML()
+        {
+            //the rowindex of the cell that was clicked.
+            int rowIndex = dataGridViewSearchResultsLeft.CurrentCell.RowIndex;
+
+            //the id of the item. The grid doesnt show it, but searchResults does (it's defined at the top and used on line 35)
+            string id = searchResults.Rows[rowIndex][1].ToString();
+
+            // the name of the item.
+            string name = searchResults.Rows[rowIndex][0].ToString();
+
+            SQL sql = new SQL();
+
+            //this table will hold the tableName for the ID.
+            DataTable mappedPair = sql.execute("select tableName from Mapping where uniqueentryid = '" + id + "'");
+            string tableName = mappedPair.Rows[0][0].ToString();
+
+            XMLItem info = new XMLItem(id, name, tableName);
+
+            return info;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            xmlHandler.addToOwnedContent(createInfoForXML());
+            dataGridViewSearchResultsLeft_CellClick(dataGridViewItemDetails, null);
+            this.statsHandler = new StatsHandler(this.xmlHandler.getOwnedContent());
+        }
+
+        private bool checkIfOwned(string key)
+        {
+            return xmlHandler.checkIfOwned(key);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            xmlHandler.removeFromOwnedContent(createInfoForXML().ID());
+            dataGridViewSearchResultsLeft_CellClick(dataGridViewItemDetails, null);
+            this.statsHandler = new StatsHandler(this.xmlHandler.getOwnedContent());
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex != 0)
+            {
+
+            }
+        }
+
+       
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.statsHandler.createStats(xmlHandler.getOwnedContent());
+        }
+
+        private void fillComboBox()
+        {
+            foreach (string table in tableNames)
+            {
+                comboBoxSearch.Items.Add(table);
+            }
+
+            comboBox1.Items.Add("none");
+            comboBox1.Items.Add("red");
+            comboBox1.Items.Add("blue");
+            comboBox1.Items.Add("green");
+            comboBox1.Items.Add("yellow");
+            comboBox1.Items.Add("black");
+            comboBox1.Items.Add("colorful");
+
+            comboBoxSearch.SelectedIndex = 0;
+            comboBox1.SelectedIndex = 0;
+
+        }
+
+        private void comboBoxSearch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string currentSelection = comboBoxSearch.GetItemText(comboBoxSearch.SelectedItem);
+            
+            if(currentSelection != "all")
+            {
+                SQL sql = new SQL();
+
+                DataTable currentTable = sql.execute("select * from " + currentSelection);
+
+                bool colorExists = checkIfColorExists(currentTable);
+
+                if (colorExists)
+                {
+                    comboBox1.Enabled = true;
+                }
+                else
+                {
+                    comboBox1.SelectedIndex = 0;
+                    comboBox1.Enabled = false;
+                }
+            }
+            
+        }
+
+        private bool checkIfColorExists(DataTable table)
+        {
+            bool colorExists = false;
+
+            foreach (DataColumn column in table.Columns)
+            {
+                string columnName = column.ColumnName;
+
+                if (columnName.Contains("color"))
+                {
+                    colorExists = true;
+                }
+            }
+            return colorExists;
         }
     }
 }

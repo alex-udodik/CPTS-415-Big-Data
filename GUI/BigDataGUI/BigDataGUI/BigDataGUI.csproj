@@ -98,7 +98,9 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Libraries\SQL.cs" />
+    <Compile Include="Libraries\StatsHandler.cs" />
     <Compile Include="Libraries\XMLHandler.cs" />
+    <Compile Include="Libraries\XMLItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

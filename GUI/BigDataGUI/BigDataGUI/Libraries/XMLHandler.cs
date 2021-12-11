@@ -10,13 +10,13 @@ namespace BigDataGUI.Libraries
 {
 	public class XMLHandler
 	{
-		private List<string> ownedContent; // list of keys for the content owned
+		private List<XMLItem> ownedContent; // list of owned content info
 		private string currentFile = string.Empty; // current file name
 
 		// constructor
 		public XMLHandler()
 		{
-			this.ownedContent = new List<string>();
+			this.ownedContent = new List<XMLItem>();
 		}
 
 		// Method for Updating an XML document
@@ -31,17 +31,17 @@ namespace BigDataGUI.Libraries
 
 				// create Node for the current content key and append to the Content
 				XmlNode currentKey = doc.CreateElement("Key");
-				currentKey.InnerText = this.ownedContent[i];
+				currentKey.InnerText = this.ownedContent[i].ID();
 				currentContent.AppendChild(currentKey);
 
-				// create Node for the type of content and append to the Content
+				// create Node for the name of content and append to the Content
 				XmlNode currentName = doc.CreateElement("Name");
-				currentName.InnerText = ("THIS IS WIP");
+				currentName.InnerText = this.ownedContent[i].Name();
 				currentContent.AppendChild(currentName);
 
 				// create Node for the type of content and append to the Content
 				XmlNode currentType = doc.CreateElement("Type");
-				currentType.InnerText = ("THIS IS WI");
+				currentType.InnerText = this.ownedContent[i].Type();
 				currentContent.AppendChild(currentType);
 
 				// append to root
@@ -58,7 +58,8 @@ namespace BigDataGUI.Libraries
 		{
 			this.currentFile = name;
 			string fileName = "\\" + name + ".xml";
-			string path = Directory.GetCurrentDirectory() + fileName;
+			string path = Directory.GetCurrentDirectory().Replace("bin\\Debug", "");
+			path += fileName;
 			XmlDocument doc = new XmlDocument();
 			doc = this.UpdateXML(doc);
 			if (!File.Exists(path))
@@ -69,23 +70,23 @@ namespace BigDataGUI.Libraries
 			doc.Save(path);
 		}
 
-		public void addToOwnedContent(string key)
+		public void addToOwnedContent(XMLItem info)
 		{
 			bool exists = false;
 			int i = 0;
-			while(i < this.ownedContent.Count || exists == false)
+			while (i < this.ownedContent.Count)
 			{
-				if (this.ownedContent[i] == key)
+				if (this.ownedContent[i].ID() == info.ID())
 				{
 					exists = true;
+					break;
 				}
 				i++;
 			}
-			if (exists = false)
+			if (exists == false)
 			{
-				this.ownedContent.Add(key);
-				this.ownedContent.Sort();
-				SaveXML(currentFile);
+				this.ownedContent.Add(info);
+				SaveXML("ACNH_OwnedContent");
 			}
 		}
 
@@ -93,18 +94,18 @@ namespace BigDataGUI.Libraries
 		{
 			bool exists = false;
 			int i = 0;
-			while(i < this.ownedContent.Count || exists == false)
+			while (i < this.ownedContent.Count)
 			{
-				if (this.ownedContent[i] == key)
+				if (this.ownedContent[i].ID() == key)
 				{
 					exists = true;
+					break;
 				}
 				i++;
 			}
-			if (exists = true)
+			if (exists == true)
 			{
-				this.ownedContent.RemoveAt(i - 1);
-				this.ownedContent.Sort();
+				this.ownedContent.RemoveAt(i);
 				SaveXML(currentFile);
 			}
 		}
@@ -114,27 +115,51 @@ namespace BigDataGUI.Libraries
 		{
 			this.currentFile = name;
 			string fileName = "\\" + name + ".xml";
-			string path = Directory.GetCurrentDirectory() + fileName;
+			string path = Directory.GetCurrentDirectory().Replace("bin\\Debug", "");
+			path += fileName;
 			XmlDocument doc = new XmlDocument();
-			doc.Load(path);
-			this.readXML(doc);
+			if (File.Exists(path))
+			{
+				doc.Load(path);
+				this.readXML(doc);
+			}
 			return doc;
 		}
 
 		// Method for reading the XML doc to update the owned content list
 		public void readXML(XmlDocument doc)
 		{
-			List<string> loadedContentList = new List<string>(); // create new list
+			List<XMLItem> loadedContentList = new List<XMLItem>(); // create new list
 			XmlNodeList nodeList = doc.SelectNodes("/OwnedContent/Content"); // create XML node list filled with all the content nodes
 
 			// in each content node takt the inner text of the key and add it to the loaded content list
 			foreach (XmlNode node in nodeList)
 			{
-				loadedContentList.Add(node["Key"].InnerText);
+				loadedContentList.Add(new XMLItem(node["Key"].InnerText, node["Name"].InnerText, node["Type"].InnerText));
 			}
 
-			loadedContentList.Sort(); // sort list
 			this.ownedContent = loadedContentList; // update the owned content list;
+		}
+
+		public List<XMLItem> getOwnedContent()
+		{
+			return this.ownedContent;
+		}
+
+		public bool checkIfOwned(string key)
+		{
+			bool exists = false;
+			int i = 0;
+			while (i < this.ownedContent.Count)
+			{
+				if (this.ownedContent[i].ID() == key)
+				{
+					exists = true;
+					break;
+				}
+				i++;
+			}
+			return exists;
 		}
 	}
 }

@@ -1,0 +1,6 @@
+Percent Owned of Each Content Type Owned
+ 
+Headwear
+   5/698 owned
+   0.00716332378223496% completion
+
