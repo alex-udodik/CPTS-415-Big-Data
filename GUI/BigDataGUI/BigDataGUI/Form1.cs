@@ -16,8 +16,9 @@ namespace BigDataGUI
         private DataTable searchResults;
         private XMLHandler xmlHandler = new XMLHandler();
         private StatsHandler statsHandler;
+        private Dictionary<string, List<string>> contentDictionary;
 
-        string[] tableNames = { "all", "accessories", "achievements", "art", "bags", "bottoms", "construction", "dressup", "fencing", "fish", "floors", "headwear",
+        string[] tableNames = { "all", "accessories", "achievements", "art", "bags", "bottoms", "construction", "dressup", "fencing", "fish", "floors","fossils", "headwear",
                                             "housewares", "insects", "miscellaneous", "music", "other", "photos", "posters", "reactions", "recipes", "rugs", "shoes",
                                             "socks", "tools", "tops", "umbrellas", "villagers", "wallmounted", "wallpaper"};
 
@@ -26,6 +27,7 @@ namespace BigDataGUI
             InitializeComponent();
             xmlHandler.LoadXML("ACNH_OwnedContent");
             this.statsHandler = new StatsHandler(this.tableNames);
+            this.contentDictionary = this.xmlHandler.createContentDictionary(this.tableNames, this.xmlHandler.getOwnedContent());
             fillComboBox();
         }
 
@@ -34,7 +36,15 @@ namespace BigDataGUI
         {
             if (e.KeyData == Keys.Enter)
             {
-                this.performSearch();
+                if(ownedBox.SelectedIndex == 0)
+                {
+                    this.performSearch();
+                }
+                else
+                {
+                    this.performOwnedUnownedSearch();
+                }
+                
             }
         }
 
@@ -72,6 +82,51 @@ namespace BigDataGUI
                 string color = comboBox1.SelectedItem.ToString();
 
                 query.Append(sql.searchColorAndCategory(color, word, category));
+            }
+
+            DataTable original_table = sql.execute(query.ToString());
+            DataTable modified_table = original_table.Copy();
+            searchResults = original_table.Copy();
+            modified_table.Columns.Remove("UniqueEntryID");
+
+            dataGridViewSearchResultsLeft.DataSource = modified_table;
+            dataGridViewSearchResultsLeft.Columns[0].Width = 200;
+        }
+
+        // method that performs the search
+        private void performOwnedUnownedSearch()
+        {
+            Console.WriteLine("Enter pressed");
+            string word = searchTextBox.Text.ToString();
+            SQL sql = new SQL();
+            StringBuilder query = new StringBuilder();
+
+            // none selected
+            if (comboBox1.SelectedIndex == 0 && comboBoxSearch.SelectedIndex == 0)
+            {
+                query.Append(sql.executeSearch(word, this.contentDictionary, this.ownedNotOwned()));
+            }
+
+            //category only selected
+            else if (comboBox1.SelectedIndex == 0 && comboBoxSearch.SelectedIndex != 0)
+            {
+                string category = comboBoxSearch.SelectedItem.ToString();
+                query.Append(sql.GetQueryForFilterByCategorySearch(word, category, this.contentDictionary, this.ownedNotOwned()));
+            }
+
+            //color only selected
+            else if (comboBox1.SelectedIndex != 0 && comboBoxSearch.SelectedIndex == 0)
+            {
+                query.Append(sql.searchColor(comboBox1.Text.ToString(), word, this.contentDictionary, this.ownedNotOwned()));
+            }
+
+            //both are selected
+            else
+            {
+                string category = comboBoxSearch.SelectedItem.ToString();
+                string color = comboBox1.SelectedItem.ToString();
+
+                query.Append(sql.searchColorAndCategory(color, word, category, this.contentDictionary, this.ownedNotOwned()));
             }
 
             DataTable original_table = sql.execute(query.ToString());
@@ -253,7 +308,8 @@ namespace BigDataGUI
         // method to add to owned content
         private void button1_Click(object sender, EventArgs e)
         {
-            xmlHandler.addToOwnedContent(createInfoForXML());
+            this.xmlHandler.addToOwnedContent(createInfoForXML());
+            this.contentDictionary = this.xmlHandler.createContentDictionary(this.tableNames, this.xmlHandler.getOwnedContent());
             dataGridViewSearchResultsLeft_CellClick(dataGridViewItemDetails, null);
         }
 
@@ -266,14 +322,22 @@ namespace BigDataGUI
         // method to remove from owned content
         private void button2_Click(object sender, EventArgs e)
         {
-            xmlHandler.removeFromOwnedContent(createInfoForXML().ID());
+            this.xmlHandler.removeFromOwnedContent(createInfoForXML().ID());
+            this.contentDictionary = this.xmlHandler.createContentDictionary(this.tableNames, this.xmlHandler.getOwnedContent());
             dataGridViewSearchResultsLeft_CellClick(dataGridViewItemDetails, null);
         }
 
         // method to perform search when color selection is changed
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.performSearch();
+            if (ownedBox.SelectedIndex == 0)
+            {
+                this.performSearch();
+            }
+            else
+            {
+                this.performOwnedUnownedSearch();
+            }
         }
 
        
@@ -297,11 +361,17 @@ namespace BigDataGUI
             comboBox1.Items.Add("green");
             comboBox1.Items.Add("yellow");
             comboBox1.Items.Add("black");
+            comboBox1.Items.Add("white");
             comboBox1.Items.Add("colorful");
 
+            ownedBox.Items.Add("both");
+            ownedBox.Items.Add("owned");
+            ownedBox.Items.Add("unowned");
+
+            
             comboBoxSearch.SelectedIndex = 0;
             comboBox1.SelectedIndex = 0;
-
+            ownedBox.SelectedIndex = 0;
         }
 
         // method to perform search when type selection is changed
@@ -332,9 +402,16 @@ namespace BigDataGUI
             else
             {
                 comboBox1.SelectedIndex = 0;
-                comboBox1.Enabled = false;
+                comboBox1.Enabled = true;
             }
-            this.performSearch();
+            if (ownedBox.SelectedIndex == 0)
+            {
+                this.performSearch();
+            }
+            else
+            {
+                this.performOwnedUnownedSearch();
+            }
         }
 
         // method to check if color exists in the table
@@ -352,6 +429,27 @@ namespace BigDataGUI
                 }
             }
             return colorExists;
+        }
+
+        private bool ownedNotOwned()
+        {
+            if (this.ownedBox.SelectedIndex == 1)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void ownedBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ownedBox.SelectedIndex == 0)
+            {
+                this.performSearch();
+            }
+            else
+            {
+                this.performOwnedUnownedSearch();
+            }
         }
     }
 }

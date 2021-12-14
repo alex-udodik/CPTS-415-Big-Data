@@ -161,5 +161,23 @@ namespace BigDataGUI.Libraries
 			}
 			return exists;
 		}
+
+		public Dictionary<string, List<string>> createContentDictionary(string[] tableNames, List<XMLItem> contentList)
+		{
+
+			Dictionary<string, List<string>> contentDictionary = new Dictionary<string, List<string>>();
+			foreach (string type in tableNames)
+			{
+				contentDictionary.Add(type, new List<String>());
+			}
+			// check each XMLItem in the content list and build a dictionary of items of team
+			foreach (XMLItem item in contentList)
+			{
+				contentDictionary["all"].Add(item.ID());
+				contentDictionary[item.Type().ToLower()].Add(item.ID());
+			}
+
+			return contentDictionary;
+		}
 	}
 }
