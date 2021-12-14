@@ -25,57 +25,63 @@ namespace BigDataGUI
         {
             InitializeComponent();
             xmlHandler.LoadXML("ACNH_OwnedContent");
-            this.statsHandler = new StatsHandler(this.xmlHandler.getOwnedContent());
+            this.statsHandler = new StatsHandler(this.tableNames);
             fillComboBox();
         }
 
+        // method that handles performs a search after enter is pressed in the text box
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)
             {
-                Console.WriteLine("Enter pressed");
-                string word = searchTextBox.Text.ToString();
-                SQL sql = new SQL();
-                StringBuilder query = new StringBuilder();
-
-                // none selected
-                if (comboBox1.SelectedIndex == 0 && comboBoxSearch.SelectedIndex == 0)
-                {
-                    query.Append(sql.executeSearch(word));
-                }
-
-                //category only selected
-                else if (comboBox1.SelectedIndex == 0 && comboBoxSearch.SelectedIndex != 0)
-                {
-                    string category = comboBoxSearch.SelectedItem.ToString();
-                    query.Append(sql.GetQueryForFilterByCategorySearch(word, category));
-                }
-
-                //color only selected
-                else if (comboBox1.SelectedIndex != 0 && comboBoxSearch.SelectedIndex == 0)
-                {
-                    query.Append(sql.searchColor(comboBox1.Text.ToString(), word));
-                }
-
-                //both are selected
-                else
-                {
-                    string category = comboBoxSearch.SelectedItem.ToString();
-                    string color = comboBox1.SelectedItem.ToString();
-
-                    query.Append(sql.searchColorAndCategory(color, word, category));
-                }
-                
-                DataTable original_table = sql.execute(query.ToString());
-                DataTable modified_table = original_table.Copy();
-                searchResults = original_table.Copy();
-                modified_table.Columns.Remove("UniqueEntryID");
-
-                dataGridViewSearchResultsLeft.DataSource = modified_table;
-                dataGridViewSearchResultsLeft.Columns[0].Width = 200;  
+                this.performSearch();
             }
         }
 
+        // method that performs the search
+        private void performSearch()
+        {
+            Console.WriteLine("Enter pressed");
+            string word = searchTextBox.Text.ToString();
+            SQL sql = new SQL();
+            StringBuilder query = new StringBuilder();
+
+            // none selected
+            if (comboBox1.SelectedIndex == 0 && comboBoxSearch.SelectedIndex == 0)
+            {
+                query.Append(sql.executeSearch(word));
+            }
+
+            //category only selected
+            else if (comboBox1.SelectedIndex == 0 && comboBoxSearch.SelectedIndex != 0)
+            {
+                string category = comboBoxSearch.SelectedItem.ToString();
+                query.Append(sql.GetQueryForFilterByCategorySearch(word, category));
+            }
+
+            //color only selected
+            else if (comboBox1.SelectedIndex != 0 && comboBoxSearch.SelectedIndex == 0)
+            {
+                query.Append(sql.searchColor(comboBox1.Text.ToString(), word));
+            }
+
+            //both are selected
+            else
+            {
+                string category = comboBoxSearch.SelectedItem.ToString();
+                string color = comboBox1.SelectedItem.ToString();
+
+                query.Append(sql.searchColorAndCategory(color, word, category));
+            }
+
+            DataTable original_table = sql.execute(query.ToString());
+            DataTable modified_table = original_table.Copy();
+            searchResults = original_table.Copy();
+            modified_table.Columns.Remove("UniqueEntryID");
+
+            dataGridViewSearchResultsLeft.DataSource = modified_table;
+            dataGridViewSearchResultsLeft.Columns[0].Width = 200;
+        }
 
         // if there are search results and a cell is clicked, this will inititate.
         private void dataGridViewSearchResultsLeft_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -244,40 +250,40 @@ namespace BigDataGUI
             return info;
         }
 
+        // method to add to owned content
         private void button1_Click(object sender, EventArgs e)
         {
             xmlHandler.addToOwnedContent(createInfoForXML());
             dataGridViewSearchResultsLeft_CellClick(dataGridViewItemDetails, null);
-            this.statsHandler = new StatsHandler(this.xmlHandler.getOwnedContent());
         }
 
+        // method to check if item is owned
         private bool checkIfOwned(string key)
         {
             return xmlHandler.checkIfOwned(key);
         }
 
+        // method to remove from owned content
         private void button2_Click(object sender, EventArgs e)
         {
             xmlHandler.removeFromOwnedContent(createInfoForXML().ID());
             dataGridViewSearchResultsLeft_CellClick(dataGridViewItemDetails, null);
-            this.statsHandler = new StatsHandler(this.xmlHandler.getOwnedContent());
         }
 
+        // method to perform search when color selection is changed
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedIndex != 0)
-            {
-
-            }
+            this.performSearch();
         }
 
        
-
+        // method to create statistics
         private void button3_Click(object sender, EventArgs e)
         {
             this.statsHandler.createStats(xmlHandler.getOwnedContent());
         }
 
+        // method to fill comboboxes
         private void fillComboBox()
         {
             foreach (string table in tableNames)
@@ -298,6 +304,9 @@ namespace BigDataGUI
 
         }
 
+        // method to perform search when type selection is changed
+        // if a specific type is selected that has color then enable combobox1
+        // if a specific type is selected that does not have color then set color to none and disable combobox1
         private void comboBoxSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
             string currentSelection = comboBoxSearch.GetItemText(comboBoxSearch.SelectedItem);
@@ -319,10 +328,16 @@ namespace BigDataGUI
                     comboBox1.SelectedIndex = 0;
                     comboBox1.Enabled = false;
                 }
+            } 
+            else
+            {
+                comboBox1.SelectedIndex = 0;
+                comboBox1.Enabled = false;
             }
-            
+            this.performSearch();
         }
 
+        // method to check if color exists in the table
         private bool checkIfColorExists(DataTable table)
         {
             bool colorExists = false;

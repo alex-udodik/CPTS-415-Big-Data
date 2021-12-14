@@ -13,9 +13,9 @@ namespace BigDataGUI.Libraries
 		private List<string> typeList = new List<string>();
 		private string stats;
 
-		public StatsHandler(List<XMLItem> ownedContent)
+		public StatsHandler(string[] tableNames)
 		{
-			this.typeList = createTypeList(ownedContent);
+			this.typeList = createTypeList(tableNames);
 			this.stats = string.Empty;
 		}
 
@@ -42,40 +42,34 @@ namespace BigDataGUI.Libraries
 			}
 		}
 
-		private List<string> createTypeList(List<XMLItem> contentList)
+		private List<string> createTypeList(string[] tableNames)
 		{
 			List<string> typeList = new List<string>();
 
-			foreach (XMLItem item in contentList)
+			foreach (string type in tableNames)
 			{
-				if (!typeList.Contains(item.Type()))
-				{
-					typeList.Add(item.Type());
-				}
+				typeList.Add(type);
 			}
-
+			typeList.Remove(tableNames[0]);
+			typeList.Add(tableNames[0]);
 			return typeList;
 		}
 
 		private Dictionary<string, List<string>> createContentDictionary(List<XMLItem> contentList)
 		{
+
 			Dictionary<string, List<string>> contentDictionary = new Dictionary<string, List<string>>();
+
+			foreach(string type in this.typeList)
+			{
+				contentDictionary.Add(type, new List<String>());
+			}
 
 			// check each XMLItem in the content list and build a dictionary of items of team
 			foreach (XMLItem item in contentList)
 			{
-				string currentType = item.Type();
-				string currentKey = item.ID();
-
-				if (contentDictionary.ContainsKey(currentType))
-				{
-					contentDictionary[currentType].Add(currentKey);
-				}
-				else
-				{
-					contentDictionary.Add(currentType, new List<String>());
-					contentDictionary[currentType].Add(currentKey);
-				}
+				contentDictionary["all"].Add(item.ID());
+				contentDictionary[item.Type().ToLower()].Add(item.ID());
 			}
 
 			return contentDictionary;
@@ -85,8 +79,6 @@ namespace BigDataGUI.Libraries
 		{
 			string percentOwned = string.Empty;
 			percentOwned += "Percent Owned of Each Content Type Owned\n \n";
-
-			typeList.Sort();
 			foreach (string type in typeList)
 			{
 				double currentCount = contentDictionary[type].Count;
@@ -103,8 +95,17 @@ namespace BigDataGUI.Libraries
 		private int getTotalFromTable(string type)
 		{
 			SQL sql = new SQL();
-			DataTable typeTable = sql.execute("select * from " + type);
-			return typeTable.Rows.Count;
+			DataTable typeTable;
+			if (type == "all")
+			{
+				typeTable = sql.execute("select Count(uniqueentryid) from Mapping");
+			}
+			else
+			{
+				typeTable = sql.execute("select Count(uniqueentryid) from " + type);
+			}
+
+			return Int32.Parse(typeTable.Rows[0][0].ToString());
 		}
 	}
 }
