@@ -12,5 +12,5 @@ and
 ````
 pip install psycopg2
 ````
-##
+## Location of owned content and stats file
 The Owned Content XML and Stats text file will be found under CPTS-415-Big-Data\GUI\BigDataGUI\BigDataGUI
